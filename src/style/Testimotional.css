@@ -1,0 +1,28 @@
+main {
+  background-color: black;
+  color: white;
+  height: 73vh;
+}
+main h2 {
+  margin-top: 15%;
+  margin-left: 10%;
+  margin-bottom: 8%;
+}
+main .text {
+  display: flex;
+}
+main #paragraph {
+  margin-top: 3%;
+  margin-left: 5%;
+}
+main button {
+  margin-left: 6%;
+  margin-top: 8%;
+  border: none;
+  background-color: black;
+}
+main img {
+  margin-top: 15%;
+  border-radius: 25px;
+  width: 80% !important;
+}/*# sourceMappingURL=Testimotional.css.map */

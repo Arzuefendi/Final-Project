@@ -1,0 +1,19 @@
+.category-box {
+  margin-top: -7%;
+  height: 75vh;
+  background-color: black;
+  color: white;
+}
+.category-box h2 {
+  margin-left: 5%;
+  padding-top: 4%;
+}
+.category-box .paragraph {
+  margin-left: 5%;
+}
+.category-box .img-fluid {
+  width: 200%;
+}
+.category-box img {
+  border-radius: 15px;
+}/*# sourceMappingURL=Category.css.map */

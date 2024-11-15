@@ -1,0 +1,120 @@
+.contact-header {
+  position: relative;
+  text-align: center;
+}
+
+.contact-header img {
+  height: 45vh;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.contact-header h2 {
+  transform: translateY(-400%);
+  position: relative;
+  z-index: 1;
+}
+
+.contact .container {
+  margin-top: 5%;
+  height: 35vh;
+  text-align: center;
+}
+.contact svg {
+  font-size: 35px;
+  color: rgb(169, 169, 169);
+}
+.contact h4 {
+  font-weight: 300;
+  color: rgb(84, 84, 84);
+}
+.contact p {
+  color: rgb(175, 175, 175);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: 1px solid black;
+}
+
+.input-box {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+.input-box input {
+  width: 40%;
+}
+.input-box .name {
+  margin-left: 5%;
+}
+
+.contact form {
+  width: 70%;
+  transform: translateX(22%);
+  height: 65vh;
+  margin-bottom: 10%;
+  border-radius: 25px;
+  background-color: #101010;
+}
+.contact form .container {
+  width: 80%;
+}
+.contact form .container input {
+  width: 100%;
+  height: 7vh;
+  border: 1px solid gray;
+  background-color: transparent;
+  border-radius: 25px;
+  margin-bottom: 4%;
+}
+.contact form .container input::-moz-placeholder {
+  padding-left: 25px;
+}
+.contact form .container input::placeholder {
+  padding-left: 25px;
+}
+.contact form .container textarea {
+  width: 100%;
+  height: 25vh;
+  border: 1px solid gray;
+  border-radius: 25px;
+  margin-bottom: 2%;
+  background-color: transparent;
+}
+.contact form .container textarea::-moz-placeholder {
+  padding-left: 25px;
+  padding-top: 15px;
+}
+.contact form .container textarea::placeholder {
+  padding-left: 25px;
+  padding-top: 15px;
+}
+.contact form button {
+  height: 7vh;
+  width: 20%;
+  border: 1px solid gray;
+  background-color: transparent;
+  border-radius: 25px;
+  color: gray;
+}
+
+.contact h1 {
+  text-align: center;
+  margin-bottom: 2%;
+  color: white;
+  font-weight: 300;
+  padding-top: 2%;
+}
+.contact .message {
+  background-color: black;
+  height: 100vh;
+}
+.contact .map {
+  width: 100%;
+  height: 55vh;
+}/*# sourceMappingURL=Cotact.css.map */

@@ -1,0 +1,32 @@
+.bestseller-section{
+    display: flex;
+    flex-direction: column;
+   
+    height: 90vh;
+}
+.bestseller-section h3{
+    margin-top: 5%;
+    margin-left: 5%;
+}
+.bestseller-section  p{
+    margin-left: 5%;
+}
+.bestseller-section  form img{
+        width: 100%;
+       
+    }
+
+.bestseller-section li{
+    list-style-type: none;
+}
+.bestseller-section  span:nth-child(1){
+    text-decoration: line-through;
+}
+.bestseller-section  .img-fluid{
+    border-radius: 15px;
+    margin-bottom: 4%;
+}
+.bestseller-section .container p{
+    font-size: 15px;
+    margin-bottom: 3px;
+}

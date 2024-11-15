@@ -1,0 +1,29 @@
+main{
+    background-color: black;
+    color: white;
+    height: 73vh;
+    
+    h2{
+        margin-top: 15%;
+        margin-left: 10%;
+        margin-bottom: 8%;
+    }
+    .text{
+        display: flex;
+    }
+    #paragraph{
+        margin-top: 3%;
+        margin-left: 5%;
+    }
+    button{
+        margin-left: 6%;
+        margin-top: 8%;
+        border: none;
+        background-color: black;
+    }
+    img{
+       margin-top: 15%;
+        border-radius: 25px;
+        width: 80% !important;
+    }
+}
