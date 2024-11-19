@@ -28,13 +28,13 @@ const Footer = () => {
           </div>
           <div className="item2">
             <h5><Link to="/about" className="dropdown-item">
-                      {t("About Us")}
+                      {t("About us")}
                     </Link> </h5>
 
             <p> <Link to="/products" className="nav-link ">{t("Our Shops")}</Link> </p>
             <p><Link to="/contact" className="nav-link ">{t("Contact")}</Link> </p>
             <p><Link to="/about" className="nav-link">
-                      {t("About Us")}
+                      {t("About us")}
                     </Link> </p>
             <p><Link to="/gallery" className="nav-link ">{t("Gallery")}</Link> </p>
           </div>

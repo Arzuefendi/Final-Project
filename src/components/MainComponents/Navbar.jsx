@@ -1,6 +1,6 @@
 import React from "react";
 import "../../style/NavbarStyle.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
 import { FiShoppingCart } from "react-icons/fi";
 import { IoMdHeartEmpty } from "react-icons/io";
@@ -9,6 +9,7 @@ import { Dropdown } from "react-bootstrap";
 import ReactCountryFlag from "react-country-flag";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const { t, i18n } = useTranslation();
   const changeLanguage = (lang) => {
     i18n.changeLanguage(lang);
@@ -152,9 +153,9 @@ const Navbar = () => {
               </li>
             </ul>
             <div className="icon me-5 ">
-              <CgProfile className="m-2" />
-              <IoMdHeartEmpty className="m-2" />
-              <FiShoppingCart className="m-3" />
+              <CgProfile className="m-2" onClick={() => navigate("/profile")} />
+              <IoMdHeartEmpty className="m-2" onClick={() => navigate("/wishlist")} />
+              <FiShoppingCart className="m-3"onClick={() => navigate("/cart")} />
             </div>
           </div>
         </div>
