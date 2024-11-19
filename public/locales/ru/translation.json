@@ -102,5 +102,12 @@
     "Selected price":"Выбранная цена",
     "Sort by:":"Сортировать по:",
     "Low to High":"По возрастанию",
-    "High to Low":"По убыванию"
+    "High to Low":"По убыванию",
+    "Email adress":"Email адрес",
+    "Password":"Пароль",
+    "Sign In":"Войти",
+    "Don't have an account?":"У вас нет учетной записи?",
+    "Sign Up":"Зарегистрироваться",
+    "Already have an account?":"У вас уже есть аккаунт?",
+    "Create":"Создавать"
 }

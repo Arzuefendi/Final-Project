@@ -104,5 +104,12 @@
     "Selected price":"Selected price",
     "Sort by:":"Sort by:",
     "Low to High":"Low to High",
-    "High to Low":"High to Low"
+    "High to Low":"High to Low",
+    "Email adress":"Email adress",
+    "Password":"Password",
+    "Sign In":"Sign in",
+    "Don't have an account?":"Don't have an account?",
+    "Sign Up":"Sign Up",
+    "Already have an account?":"Already have an account?",
+    "Create":"Create"
 }

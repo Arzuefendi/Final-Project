@@ -6,6 +6,7 @@
     "My account": "Hesabım",
     "Blog": "Bloq",
     "About us": "Haqqımızda" ,
+    "About Us":   "Haqqımızda" ,
     "Testimonial": "Rəylər",
     "FAQ":"Suallar",
     "Gallery": "Qalereya",
@@ -19,7 +20,7 @@
     "Let's experience and see extremely beautiful sofa models...": "Son dərəcə gözəl divan modelləri...",
     "Free Shipping": "Pulsuz çatdırılma",
     "Quality Assurance":"Keyfiyyət Təminatı",
-    "Return within 14 days":"14 gün ərzində geri qaytarma",
+    "Return within 14 days":"14 gün ərzində qaytarma",
     "Support 24/7": "24/7 dəstək",
     "Harmony In Design":"Dizaynda harmoniya",
     "Bathroom":"Vanna otağı",
@@ -102,5 +103,12 @@
     "Selected price":"Seçilmiş qiymət",
     "Sort by:":"Sırala:",
     "Low to High":"Aşağıdan Yüksəyə",
-    "High to Low":"Yüksəkdən Aşağıya"
+    "High to Low":"Yüksəkdən Aşağıya", 
+    "Email adress":"Email ünvanı",
+    "Password":"Şifrə",
+    "Sign In":"Daxil olun",
+    "Don't have an account?":"Hesabınız yoxdur?",
+    "Sign Up":"Qeydiyyatdan keçin",
+    "Already have an account?":"Artıq hesabınız var?",
+    "Create":"Yarat"
 }

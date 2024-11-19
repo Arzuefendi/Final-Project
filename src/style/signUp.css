@@ -1,0 +1,46 @@
+.signup-container {
+  min-height: 100vh;
+  background-color: rgb(239, 238, 238);
+}
+.signup-container .signup-box {
+  background-color: #161616;
+  border-radius: 10px;
+  width: 550px;
+  margin-bottom: 5%;
+}
+.signup-container .signup-box h2 {
+  color: white;
+}
+.signup-container .signup-box p {
+  color: white;
+}
+.signup-container .signup-box p .signin-link {
+  color: rgb(159, 159, 159);
+  text-decoration: none;
+}
+.signup-container .signup-box p .signin-link:hover {
+  text-decoration: underline;
+}
+.signup-container .signup-box .form-input {
+  background-color: #2e2e2e;
+  border: 1px solid #444;
+  color: white;
+  margin-bottom: 15px;
+  padding: 12px;
+  font-size: 15px;
+}
+.signup-container .signup-box .form-input::-moz-placeholder {
+  color: #aaaaaa;
+}
+.signup-container .signup-box .form-input::placeholder {
+  color: #aaaaaa;
+}
+.signup-container .signup-box .create-btn {
+  background-color: rgb(185, 185, 185);
+  border: none;
+  width: 100px;
+  color: black;
+}
+.signup-container .signup-box .create-btn:hover {
+  background-color: rgb(239, 238, 238);
+}/*# sourceMappingURL=signUp.css.map */

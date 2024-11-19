@@ -1,0 +1,52 @@
+.signup-container {
+  min-height: 100vh;
+  background-color: rgb(239, 238, 238);
+
+  .signup-box {
+    background-color: #161616;
+    border-radius: 10px;
+    width: 550px;
+    margin-bottom: 5%;
+
+    h2 {
+      color: white;
+    }
+
+    p {
+      color:white;
+
+      .signin-link {
+        color: rgb(159, 159, 159);
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .form-input {
+      background-color: #2e2e2e;
+      border: 1px solid #444;
+      color: white;
+      margin-bottom: 15px;
+      padding: 12px;
+      font-size: 15px;
+
+      &::placeholder {
+        color: #aaaaaa;
+      }
+    }
+
+    .create-btn {
+      background-color: rgb(185, 185, 185);
+      border: none;
+      width: 100px;
+      color: black;
+
+      &:hover {
+        background-color: rgb(239, 238, 238);
+      }
+    }
+  }
+}

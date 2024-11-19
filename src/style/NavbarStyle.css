@@ -8,6 +8,13 @@ nav {
 nav svg {
   font-size: 20px;
 }
+nav .profile-button {
+  border: none;
+  background-color: transparent;
+}
+nav .profile-button svg {
+  margin-right: 10px;
+}
 
 .nav-head {
   height: 5vh;
