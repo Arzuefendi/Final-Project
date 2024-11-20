@@ -1,14 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import "../style/Faq.css";
 import { useTranslation } from "react-i18next";
+import { ThemeContext } from "../ModeContext/Mode";
 
 const Faq = () => {
   const { t } = useTranslation();
+  const { isDarkMode } = useContext(ThemeContext);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   return (
-    <div className="faq">
+    <div className={`faq ${isDarkMode ? 'dark-mode' : 'light-mode'} `}>
       <div className="contact-header text-center">
         <img
           src="https://wpbingo-darion.myshopify.com/cdn/shop/files/bg-breadcrumb.jpg?v=1721207637"

@@ -1,4 +1,4 @@
-import React from "react";
+
 import "../../style/Footer.css";
 import { RiFacebookFill } from "react-icons/ri";
 import { FaTiktok } from "react-icons/fa";
@@ -9,6 +9,7 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 const Footer = () => {
   const { t } = useTranslation();
+ 
   return (
     <footer>
       <div className="container">
@@ -46,7 +47,7 @@ const Footer = () => {
             <p><Link to="/faq" className="nav-link ">{t("FAQ")}</Link> </p>
             <p><Link to="/blog" className="nav-link ">{t("Blog")}</Link> </p>
             <p><Link to="/cart" className="nav-link ">{t("Your order")} </Link></p>
-            <p><Link to="/profile" className="nav-link ">{t("My account")} </Link></p>
+            <p><Link to="/wishlist" className="nav-link ">{t("Wishlist")} </Link></p>
           </div>
         </div>
       </div>

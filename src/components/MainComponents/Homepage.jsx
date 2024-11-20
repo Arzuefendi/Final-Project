@@ -1,16 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../../style/Home.css";
 import Bestseller from "../Bestseller";
 import Testimonial from "../Testimonial";
 import Category from "../Category";
 import { useTranslation } from "react-i18next";
+import { ThemeContext } from "../../ModeContext/Mode";
+import { useNavigate } from "react-router-dom";
 const Homepage = () => {
   const { t } = useTranslation();
+  const { isDarkMode } = useContext(ThemeContext);
+  const navigate = useNavigate();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const handleButtonClick = () => {
+    navigate("/products"); 
+};
   return (
-    <div className="main">
+    <div className={`main ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
       <div
         id="carouselExampleAutoplaying"
         className="carousel slide"
@@ -30,7 +38,7 @@ const Homepage = () => {
                   "Feeling comfortable and airy when sitting all day.To own space"
                 )}
               </p>
-              <button className="btn">{t("Shop now")}</button>
+              <button className="btn" onClick={handleButtonClick}>{t("Shop now")}</button>
             </div>
           </div>
 
@@ -45,7 +53,7 @@ const Homepage = () => {
               <p>
                 {t("Experience Choose a beautiful bed for you and your family")}
               </p>
-              <button className="btn">{t("Shop now")}</button>
+              <button className="btn" onClick={handleButtonClick}>{t("Shop now")}</button>
             </div>
           </div>
 
@@ -62,7 +70,7 @@ const Homepage = () => {
                   "Let's experience and see extremely beautiful sofa models..."
                 )}
               </p>
-              <button className="btn">{t("Shop now")}</button>
+              <button className="btn" onClick={handleButtonClick} >{t("Shop now")}</button>
             </div>
           </div>
         </div>

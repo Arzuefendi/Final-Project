@@ -13,15 +13,23 @@ import Gallery from "./components/Gallery.jsx";
 import Wishlist from "./components/Wishlist.jsx";
 import Cart from "./components/Cart.jsx";
 import ScrollToTop from "./components/MainComponents/ScrollToTop.jsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Admin from "./components/Admin.jsx";
 import SignUp from "./SignUp.jsx";
 import SignIn from "./components/SignIn.jsx";
+import { ThemeProvider } from "./ModeContext/Mode.jsx";
+import "./style/darkMode.css"
+
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+ 
+ 
+   
+
   return (
     <>
+      <ThemeProvider>
       <Navbar
         isAuthenticated={isAuthenticated}
         setIsAuthenticated={setIsAuthenticated}
@@ -51,6 +59,7 @@ function App() {
       </Routes>
       <ScrollToTop />
       <Footer />
+      </ThemeProvider>
     </>
   );
 }

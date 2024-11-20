@@ -70,11 +70,11 @@ const Testimonial = () => {
                 data-bs-target="#carouselExample"
                 data-bs-slide="prev"
               >
-                <button
+                <span
                   className="carousel-control-prev-icon"
                   aria-hidden="true"
-                ></button>
-                <button className="visually-hidden">Previous</button>
+                ></span>
+                <span className="visually-hidden">Previous</span>
               </button>
               <button
                 className="slick-next slick-arrow"
@@ -83,11 +83,11 @@ const Testimonial = () => {
                 data-bs-target="#carouselExample"
                 data-bs-slide="next"
               >
-                <button
+                <span
                   className="carousel-control-next-icon"
                   aria-hidden="true"
-                ></button>
-                <button className="visually-hidden">Next</button>
+                ></span>
+                <span className="visually-hidden">Next</span>
               </button>
             </div>
           </div>

@@ -1,14 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import "../../style/About.css";
 import Testimonial from "../Testimonial";
 import { useTranslation } from "react-i18next";
+import { ThemeContext } from "../../ModeContext/Mode";
 const About = () => {
   const { t } = useTranslation();
+  const { isDarkMode } = useContext(ThemeContext);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   return (
-    <div className="about">
+    <div className={`about ${isDarkMode ? 'dark-mode' : 'light-mode'} `}>
       <div className="contact-header text-center">
         <img src="	https://wpbingo-darion.myshopify.com/cdn/shop/files/bg-breadcrumb.jpg?v=1721207637" />
         <h2>
@@ -62,7 +64,7 @@ const About = () => {
           </div>
         </div>
       </div>
-      <div className="img-box">
+      <div className="about-img-box">
         <img src="https://wpbingo-darion.myshopify.com/cdn/shop/files/bg-1.jpg?v=1721359453" />
       </div>
       <Testimonial />

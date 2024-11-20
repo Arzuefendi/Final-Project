@@ -1,0 +1,63 @@
+.dark-mode {
+    background-color: black !important;
+    color: #fff;
+  }
+  .dark-mode .table>:not(caption)>*>* {
+    background-color: #111111;
+    color: white;
+  }
+ .dark-mode .card .card-body{
+    background-color: black;
+    color: white;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+  
+}
+
+.dark-mode .contact-header {
+  position: relative;
+  text-align: center;
+}
+
+.dark-mode .contact-header img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.dark-mode .contact-header::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); 
+  z-index: 1;
+}
+
+.dark-mode .contact-header h2 {
+  position: relative;
+  z-index: 2; 
+  color: #fff; 
+}
+
+.dark-mode .img-box{
+  background-color: rgb(45, 45, 45);
+  margin-top: 0%;
+  height: 105vh;
+}
+.dark-mode  .bestseller-section{
+  background-color: rgb(45, 45, 45);
+}
+.dark-mode .team-box{
+  background-color: rgb(45, 45, 45);
+  padding-top: 5%;
+}
+.dark-mode .brand{
+  background-color: rgb(80, 80, 80);
+ 
+}
+.dark-mode nav{
+  background-color: black !important;
+}

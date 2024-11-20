@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../../style/Products.css";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
+import { ThemeContext } from "../../ModeContext/Mode";
 const Products = () => {
   const { t } = useTranslation();
+  const { isDarkMode } = useContext(ThemeContext);
   const apiKey =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtneGd6eWJ6cmtucHZlZXR4YmtxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjg1NzUxNDMsImV4cCI6MjA0NDE1MTE0M30.c0Kyapgbmrxify5PPgZUKhM7HPKNzTt6cfHoRdDP1T8";
   const [data, setData] = useState([]);
@@ -50,7 +52,7 @@ const Products = () => {
     setPrice(event.target.value);
   };
   return (
-    <div className="products">
+    <div className={`products ${isDarkMode ? 'dark-mode' : 'light-mode'} `}>
       <div className="contact-header text-center">
         <img
           src="https://wpbingo-darion.myshopify.com/cdn/shop/files/bg-breadcrumb.jpg?v=1721207637"

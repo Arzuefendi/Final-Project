@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../../style/NavbarStyle.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
@@ -8,6 +8,8 @@ import { useTranslation } from "react-i18next";
 import { Dropdown } from "react-bootstrap";
 import ReactCountryFlag from "react-country-flag";
 import { Modal, Form, Button } from "react-bootstrap";
+import { ThemeContext } from "../../ModeContext/Mode";
+import { MdDarkMode, MdOutlineDarkMode } from "react-icons/md";
 
 const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
   const navigate = useNavigate();
@@ -17,6 +19,7 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
     i18n.changeLanguage(lang);
   };
   const currentLanguage = i18n.language;
+  const { isDarkMode, toggleTheme } = useContext(ThemeContext);
   const [showSignIn, setShowSignIn] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
   // const [menuOpen, setMenuOpen] = useState(false);
@@ -129,7 +132,7 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
   return (
     <div>
       <div className="nav-head d-flex justify-content-between align-items-center mx-3 my-2">
-        <p>Quick sale: 20% off products purchased today</p>
+        <p>{t("Quick sale: 20% off products purchased today")}</p>
         <Dropdown>
           <Dropdown.Toggle
             className="custom-dropdown-toggle"
@@ -173,6 +176,13 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
                 )
             )}
           </Dropdown.Menu>
+          <button
+            variant="outline-light"
+            className="fs-5 icons"
+            onClick={toggleTheme}
+          >
+            {isDarkMode ? <MdDarkMode /> : <MdOutlineDarkMode />}
+          </button>
         </Dropdown>
       </div>
       <nav className="navbar navbar-expand-lg">
@@ -264,22 +274,23 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
               </li>
             </ul>
             <div className="icon me-5">
-            <IoMdHeartEmpty
-                    className="m-2"
-                    onClick={() => navigate("/wishlist")}
-                  />
-                  <FiShoppingCart
-                    className="m-3"
-                    onClick={() => navigate("/cart")}
-                  />
+              <IoMdHeartEmpty
+                className="m-2"
+                onClick={() => navigate("/wishlist")}
+              />
+              <FiShoppingCart
+                className="m-3"
+                onClick={() => navigate("/cart")}
+              />
               {isAuthenticated ? (
                 username && (
-                  <button 
+                  <button
                     variant="outline-light"
                     className="profile-button"
                     onClick={() => setShowProfile(true)}
                   >
-                    <CgProfile/>{username}
+                    <CgProfile />
+                    {username}
                   </button>
                 )
               ) : (
@@ -287,7 +298,6 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
                   <CgProfile className="m-2" onClick={handleSignInModalOpen} />
                 </>
               )}
-              
             </div>
           </div>
         </div>
@@ -335,7 +345,11 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
               variant="primary"
               type="submit"
               className="w-50 d-block ms-auto me-auto mt-4 "
-              style={{ backgroundColor: "rgb(239, 238, 238)", border: "none", color: "black" }}
+              style={{
+                backgroundColor: "rgb(239, 238, 238)",
+                border: "none",
+                color: "black",
+              }}
             >
               {t("Sign In")}
             </Button>
