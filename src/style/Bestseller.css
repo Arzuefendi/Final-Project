@@ -1,32 +1,84 @@
-.bestseller-section{
-    display: flex;
-    flex-direction: column;
-   
-    height: 90vh;
+.bestseller-section {
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
 }
-.bestseller-section h3{
-    margin-top: 5%;
-    margin-left: 5%;
+.bestseller-section h3 {
+  margin-top: 5%;
+  margin-left: 5%;
 }
-.bestseller-section  p{
-    margin-left: 5%;
+.bestseller-section p {
+  margin-left: 5%;
 }
-.bestseller-section  form img{
-        width: 100%;
-       
-    }
+.bestseller-section form img {
+  width: 100%;
+}
 
-.bestseller-section li{
-    list-style-type: none;
+.bestseller-section li {
+  list-style-type: none;
 }
-.bestseller-section  span:nth-child(1){
-    text-decoration: line-through;
+.bestseller-section span:nth-child(1) {
+  text-decoration: line-through;
 }
-.bestseller-section  .img-fluid{
-    border-radius: 15px;
-    margin-bottom: 4%;
+.bestseller-section .img-fluid {
+  border-radius: 15px;
+  margin-bottom: 4%;
 }
-.bestseller-section .container p{
-    font-size: 15px;
-    margin-bottom: 3px;
+.bestseller-section .container p {
+  font-size: 15px;
+  margin-bottom: 3px;
+}
+.bestseller-section .product-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.bestseller-section .product-card img {
+  width: 100%;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.bestseller-section .product-card:hover img {
+  transform: scale(1.05);
+}
+
+.bestseller-icons {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.product-card:hover .bestseller-icons {
+  opacity: 1;
+}
+
+.img-icon {
+  font-size: 1.7rem;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 5px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.img-icon:hover {
+  transform: scale(1.2);
+}
+@media (max-width: 1010px) {
+  .bestseller-section{
+    height: 75vh;
+  }
+}
+@media(max-width:992px){
+  .bestseller-section{
+      height: auto;
+      text-align: center;
+  }
 }

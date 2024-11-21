@@ -48,6 +48,7 @@ form {
 }
 .input-box input {
   width: 40%;
+  color: white !important;
 }
 .input-box .name {
   margin-left: 5%;
@@ -71,6 +72,7 @@ form {
   background-color: transparent;
   border-radius: 25px;
   margin-bottom: 4%;
+  color: white;
 }
 .contact form .container input::-moz-placeholder {
   padding-left: 25px;

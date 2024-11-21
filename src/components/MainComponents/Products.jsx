@@ -3,6 +3,9 @@ import "../../style/Products.css";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
 import { ThemeContext } from "../../ModeContext/Mode";
+import { FiShoppingCart } from "react-icons/fi";
+import { IoMdHeartEmpty } from "react-icons/io";
+import { Link } from "react-router-dom";
 const Products = () => {
   const { t } = useTranslation();
   const { isDarkMode } = useContext(ThemeContext);
@@ -14,7 +17,7 @@ const Products = () => {
   const [price, setPrice] = useState(10);
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [])
+  }, []);
   useEffect(() => {
     const handleGet = async () => {
       try {
@@ -52,18 +55,20 @@ const Products = () => {
     setPrice(event.target.value);
   };
   return (
-    <div className={`products ${isDarkMode ? 'dark-mode' : 'light-mode'} `}>
-      <div className="contact-header text-center">
+    <div className={`products ${isDarkMode ? "dark-mode" : "light-mode"} `}>
+      <div className="contact-header text-center mt-5">
         <img
           src="https://wpbingo-darion.myshopify.com/cdn/shop/files/bg-breadcrumb.jpg?v=1721207637"
           alt="Background"
         />
-        <h2>{t('Home')} /{t('Products')}</h2>
+        <h2>
+          {t("Home")} /{t("Products")}
+        </h2>
       </div>
       <div className="products-section">
         <form>
-          <h4 className="my-4">{t('Filter')} </h4>
-          <h5 className="mb-3">{t('Availability')} </h5>
+          <h4 className="my-4">{t("Filter")} </h4>
+          <h5 className="mb-3">{t("Availability")} </h5>
 
           <div className="form-check">
             <input
@@ -73,7 +78,7 @@ const Products = () => {
               className="form-check-input"
             />
             <label htmlFor="inStock" className="form-check-label">
-              {t('In stock')}
+              {t("In stock")}
             </label>
           </div>
 
@@ -85,12 +90,14 @@ const Products = () => {
               className="form-check-input"
             />
             <label htmlFor="outOfStock" className="form-check-label">
-              {t('Out of stock')}
+              {t("Out of stock")}
             </label>
           </div>
 
-          <h5 className="mt-5">{t('Price')} </h5>
-          <p>{t('Selected price')}: ${price}</p>
+          <h5 className="mt-5">{t("Price")} </h5>
+          <p>
+            {t("Selected price")}: ${price}
+          </p>
           <input
             type="range"
             className="slider"
@@ -105,20 +112,24 @@ const Products = () => {
             <span>$300</span>
           </div>
           <div className="brand-box">
-            <button>{t('Bathroom')} </button>
-            <button>{t('Chair')} </button>
-            <button>{t('Decor')}</button>
-            <button>{t('Lamp')} </button>
-            <button>{t('Table')} </button>
+            <button>{t("Bathroom")} </button>
+            <button>{t("Chair")} </button>
+            <button>{t("Decor")}</button>
+            <button>{t("Lamp")} </button>
+            <button>{t("Table")} </button>
           </div>
         </form>
         <div className="products-img">
           <div className="sort-container">
             <select name="sort" id="sort" className="sort-select">
-              <option value="a-z">{t('Sort by:')} A-Z</option>
-              <option value="z-a">{t('Sort by:')} Z-A</option>
-              <option value="pricelow">{t('Price')} : {t('Low to High')}</option>
-              <option value="pricehigh">{t('Price')}: {t('High to Low')}</option>
+              <option value="a-z">{t("Sort by:")} A-Z</option>
+              <option value="z-a">{t("Sort by:")} Z-A</option>
+              <option value="pricelow">
+                {t("Price")} : {t("Low to High")}
+              </option>
+              <option value="pricehigh">
+                {t("Price")}: {t("High to Low")}
+              </option>
             </select>
           </div>
           <div className="container">
@@ -126,7 +137,14 @@ const Products = () => {
               {currentItems.map((el) => (
                 <div className="col-sm-12 col-md-6 col-lg-4" key={el.id}>
                   <div className="product-card">
-                    <img src={el.image} className="img-fluid" alt={el.name} />
+                    <Link to={`/product/${el.id}`}>
+                      {" "}
+                      <img src={el.image} className="img-fluid" alt={el.name} />
+                    </Link>
+                    <div className="bestseller-icons">
+                      <IoMdHeartEmpty className="img-icon" />
+                      <FiShoppingCart className="img-icon" />
+                    </div>
                     <p className="text-center">{el.name}</p>
                     <p className="text-center">
                       <span className="product-span">{el.underline_price}</span>{" "}

@@ -58,4 +58,25 @@ footer p {
 }
 footer h5 {
   margin-left: 3%;
+}
+
+@media (max-width: 1010px) {
+  footer {
+    height: 45vh;
+  }
+}
+@media (max-width: 977px) {
+  footer {
+    height: 41vh;
+  }
+  footer .item1 {
+    margin-left: -10%;
+    margin-right: 5%;
+  }
+  footer .item2 {
+    margin-right: 5%;
+  }
+  footer input {
+    width: 78%;
+  }
 }/*# sourceMappingURL=Footer.css.map */

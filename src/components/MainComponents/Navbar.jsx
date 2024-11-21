@@ -131,7 +131,7 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
 
   return (
     <div>
-      <div className="nav-head d-flex justify-content-between align-items-center mx-3 my-2">
+      <div className="nav-head  d-flex justify-content-between fixed-top align-items-center mx-3 my-2">
         <p>{t("Quick sale: 20% off products purchased today")}</p>
         <Dropdown>
           <Dropdown.Toggle
@@ -185,7 +185,7 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
           </button>
         </Dropdown>
       </div>
-      <nav className="navbar navbar-expand-lg">
+      <nav className="navbar navbar-expand-lg fixed-top">
         <div className="container-fluid ms-5">
           <img
             src="https://wpbingo-darion.myshopify.com/cdn/shop/files/logo.png?crop=center&height=88&v=1720775788&width=400"

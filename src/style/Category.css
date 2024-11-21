@@ -1,6 +1,6 @@
 .category-box {
   margin-top: -7%;
-  height: 75vh;
+  height: 73vh;
   background-color: black;
   color: white;
 }
@@ -16,4 +16,23 @@
 }
 .category-box img {
   border-radius: 15px;
+}
+.category-box .product-card p {
+  margin-top: 3%;
+}
+
+.category-box img:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 1010px) {
+  .category-box {
+    height: 60vh;
+  }
+}
+@media (max-width: 992px) {
+  .category-box {
+    height: auto;
+    text-align: center;
+  }
 }/*# sourceMappingURL=Category.css.map */

@@ -19,6 +19,7 @@ import SignUp from "./SignUp.jsx";
 import SignIn from "./components/SignIn.jsx";
 import { ThemeProvider } from "./ModeContext/Mode.jsx";
 import "./style/darkMode.css"
+import ProductDetails from "./components/ProductDetails.jsx";
 
 
 function App() {
@@ -43,6 +44,8 @@ function App() {
         <Route path="/faq" element={<Faq />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/product/:productId" element={<ProductDetails />} />
+
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/signup" element={<SignUp />} />

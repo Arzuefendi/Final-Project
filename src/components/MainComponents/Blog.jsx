@@ -35,8 +35,8 @@ const Blog = () => {
     window.scrollTo(0, 0);
   }, []);
   return (
-    <div className={`blog ${isDarkMode ? 'dark-mode' : 'light-mode'} `}>
-      <div className="contact-header text-center">
+    <div className={`blog ${isDarkMode ? "dark-mode" : "light-mode"} `}>
+      <div className="contact-header text-center mt-5">
         <img src="	https://wpbingo-darion.myshopify.com/cdn/shop/files/bg-breadcrumb.jpg?v=1721207637" />
         <h2>
           {t("Home")}/{t("Blog")}{" "}

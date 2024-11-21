@@ -1,3 +1,6 @@
+*{
+   font-family: 'Montserrat', sans-serif;
+}
 .about .container img{
     width: 100%;
     border-radius: 25px;
@@ -54,3 +57,63 @@ width: 60% !important;
 height: 9vh;
 border-radius: 0% !important;
 }
+.team-box img {
+    position: relative;
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+  }
+  
+  .team-box .col-sm-12 {
+    position: relative;
+    overflow: hidden;
+  }
+  .team-box .col-sm-12::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 4%;
+    width: 92%;
+    height: 43.3vh !important;
+    border-radius: 15px;
+    background: rgba(226, 226, 226, 0.5); 
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+  }
+  
+  .team-box .col-sm-12:hover::before {
+    opacity: 1; 
+  }
+  
+  .team-box img:hover {
+    transform: scale(1.05);
+  }
+  
+  .team-box .social-icons {
+    position: absolute;
+    top: 22%;
+    right: 7%;
+    transform: translateY(-50%);
+    display: none;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 2;
+  }
+  
+  .team-box .col-sm-12:hover .social-icons {
+    display: flex;
+  }
+  
+  .team-box .social-icons a {
+    color: #fff;
+    background-color: #333;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+  }
+  .team-box .social-icons svg{
+    font-size: 1.5rem;
+  }
+
+  

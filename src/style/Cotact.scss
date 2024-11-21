@@ -47,6 +47,7 @@ form {
     width: 100%;
     input{
         width: 40%;
+        color: white !important;
     }
    .name{
     margin-left: 5%;
@@ -69,6 +70,7 @@ form {
             background-color: transparent;
             border-radius: 25px;
             margin-bottom: 4%;
+            color: white;
            }
            input::placeholder{
             padding-left: 25px;

@@ -1,7 +1,7 @@
 main {
   background-color: black;
   color: white;
-  height: 73vh;
+  height: 83vh;
 }
 main h2 {
   margin-top: 15%;
@@ -22,7 +22,35 @@ main button {
   background-color: black;
 }
 main img {
-  margin-top: 15%;
+  margin-top: 12%;
   border-radius: 25px;
-  width: 80% !important;
+  width: 95% !important;
+}
+
+@media (max-width: 1010px) {
+  main {
+    height: 70vh;
+    margin-bottom: -8%;
+  }
+}
+@media (max-width: 977px) {
+  main {
+    margin-top: 3%;
+    height: 68vh;
+  }
+  main img {
+    width: 130% !important;
+    margin-top: 20%;
+  }
+  main h2 {
+    margin-left: 0%;
+  }
+  main .carousel-inner {
+    margin-left: -20%;
+  }
+}
+@media (max-width: 895px) {
+  main img {
+    width: 120% !important;
+  }
 }/*# sourceMappingURL=Testimotional.css.map */

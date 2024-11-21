@@ -11,7 +11,7 @@ const Faq = () => {
   }, []);
   return (
     <div className={`faq ${isDarkMode ? 'dark-mode' : 'light-mode'} `}>
-      <div className="contact-header text-center">
+      <div className="contact-header text-center mt-5">
         <img
           src="https://wpbingo-darion.myshopify.com/cdn/shop/files/bg-breadcrumb.jpg?v=1721207637"
           alt="Background"

@@ -1,25 +1,33 @@
-.blog .card img{
-    height: 35vh;
-    object-fit: cover;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
+.blog{
+  background-color: #ebebeb;
 }
-.blog .card{
-    margin-bottom: 5%;
-    border-radius: 15px;
+.blog .card img {
+  height: 35vh;
+  object-fit: cover;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 }
-.blog .container{
-    height: 200vh;
+.blog .card {
+  margin-bottom: 7%;
+  border-radius: 15px;
 }
-.blog .card span:nth-child(2){
-    color: rgb(103, 103, 103);
+.blog .card:hover {
+  transform: scale(1.04);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
-.blog .card h5{
-    font-weight: 600;
+.blog .container {
+  height: 210vh;
 }
-.blog .card span, p{
-    font-weight: 200;
+.blog .card span:nth-child(2) {
+  color: rgb(103, 103, 103);
 }
-.blog .card .card-body{
-    height: 25vh;
+.blog .card h5 {
+  font-weight: 600;
+}
+.blog .card span,
+p {
+  font-weight: 200;
+}
+.blog .card .card-body {
+  height: 26vh;
 }
