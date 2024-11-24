@@ -39,6 +39,7 @@ const Products = () => {
 
     handleGet();
   }, []);
+  
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
@@ -193,4 +194,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default Products; 

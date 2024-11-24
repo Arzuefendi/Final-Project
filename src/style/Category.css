@@ -1,5 +1,4 @@
 .category-box {
-  margin-top: -7%;
   height: 73vh;
   background-color: black;
   color: white;
@@ -25,14 +24,19 @@
   transform: scale(1.05);
 }
 
-@media (max-width: 1010px) {
+@media (max-width: 1125px) {
   .category-box {
-    height: 60vh;
+    height: 62vh;
   }
 }
 @media (max-width: 992px) {
   .category-box {
     height: auto;
     text-align: center;
+  }
+}
+@media (max-width: 768px) {
+  .category-box img:hover {
+    transform: scale(0);
   }
 }/*# sourceMappingURL=Category.css.map */

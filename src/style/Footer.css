@@ -60,14 +60,14 @@ footer h5 {
   margin-left: 3%;
 }
 
-@media (max-width: 1010px) {
+@media (max-width: 1125px) {
   footer {
     height: 45vh;
   }
 }
-@media (max-width: 977px) {
+@media (max-width: 992px) {
   footer {
-    height: 41vh;
+    height: 40vh;
   }
   footer .item1 {
     margin-left: -10%;
@@ -78,5 +78,97 @@ footer h5 {
   }
   footer input {
     width: 78%;
+  }
+}
+@media (max-width: 836px) {
+  footer .item1 {
+    margin-left: -5%;
+    margin-right: 1%;
+  }
+  footer .item2 {
+    margin-right: 1%;
+  }
+}
+@media (max-width: 768px) {
+  footer .item1 {
+    margin-left: -15%;
+    margin-right: 5%;
+  }
+  footer .item2 {
+    margin-right: 5%;
+  }
+  footer input {
+    width: 100%;
+  }
+  footer button {
+    transform: translate(180%, -180%);
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    height: 4vh;
+    width: 35%;
+  }
+}
+@media (max-width: 683px) {
+  footer .item1 {
+    margin-left: -10%;
+    margin-right: 2%;
+  }
+  footer .item2 {
+    margin-right: 2%;
+  }
+}
+@media (max-width: 610px) {
+  footer .item1 {
+    margin-left: 0%;
+    margin-right: -10%;
+  }
+  footer .item2 {
+    margin-right: -2%;
+  }
+  footer input {
+    width: 80%;
+  }
+  footer input::-moz-placeholder {
+    padding-left: 3px;
+  }
+  footer input::placeholder {
+    padding-left: 3px;
+  }
+  footer button {
+    transform: translate(165%, -180%);
+    width: 30%;
+  }
+  footer {
+    height: 43vh;
+  }
+}
+@media (max-width: 576px) {
+  footer {
+    height: 100vh;
+  }
+  footer .container .row {
+    display: flex;
+    flex-direction: column;
+  }
+  footer input {
+    width: 150%;
+  }
+  footer button {
+    transform: translate(190%, -178%);
+    width: 50%;
+  }
+}
+@media (max-width: 450px) {
+  footer {
+    height: auto;
+  }
+  footer h5 {
+    width: 110%;
+  }
+  footer button {
+    transform: translate(190%, -170%);
+    width: 50%;
   }
 }/*# sourceMappingURL=Footer.css.map */

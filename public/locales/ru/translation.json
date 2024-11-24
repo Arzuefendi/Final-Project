@@ -103,7 +103,7 @@
     "Sort by:":"Сортировать по:",
     "Low to High":"По возрастанию",
     "High to Low":"По убыванию",
-    "Email adress":"Email адрес",
+    "Email address":"Email адрес",
     "Password":"Пароль",
     "Sign In":"Войти",
     "Don't have an account?":"У вас нет учетной записи?",
@@ -113,5 +113,12 @@
     "Quick sale: 20% off products purchased today":"Быстрая распродажа: скидка 20 % на товары, купленные сегодня.",
     "Estimated delivery time: 10-20 days":"Расчетное время доставки: 10-20 дней",
     "Add to Cart":"добавить в корзину",
-    "Total":"Общий"
+    "Total":"Общий",
+    "Admin Login":"Вход администратора",
+    "Login":"Авторизоваться",
+    "Sign in":"Войти",
+    "Product Added To Wishlist":"Товар добавлен в список желаний",
+    "Product Added To Cart":"Товар добавлен в корзину",
+    "Your payment has been successfully completed!":"Ваш платеж успешно завершен!",
+    "You may also like":"Вам также может понравиться"
 }

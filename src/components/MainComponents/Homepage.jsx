@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState} from "react";
 import "../../style/Home.css";
 import Bestseller from "../Bestseller";
 import Testimonial from "../Testimonial";
@@ -6,10 +6,27 @@ import Category from "../Category";
 import { useTranslation } from "react-i18next";
 import { ThemeContext } from "../../ModeContext/Mode";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify"; 
 const Homepage = () => {
   const { t } = useTranslation();
   const { isDarkMode } = useContext(ThemeContext);
   const navigate = useNavigate();
+  const [wishlist, setWishlist] = useState([]);
+  const [cart, setCart] = useState([]);
+ 
+  const handleAddToWishlist = (product) => {
+    if (!wishlist.some((item) => item.id === product.id)) {
+      setWishlist([...wishlist, product]);
+      toast.success(t('Product Added To Wishlist'));  
+    }
+  };
+  
+  const handleAddToCart = (product) => {
+    if (!cart.some((item) => item.id === product.id)) {
+      setCart([...cart, product]);
+      toast.success(t('Product Added To Cart'));  
+    }
+  };
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -28,8 +45,7 @@ const Homepage = () => {
           <div className="carousel-item active">
             <img
               src="https://wpbingo-darion.myshopify.com/cdn/shop/files/slider-1-3.jpg?v=1721019421"
-              className="d-block w-100"
-              height="660vh"
+              alt=""
             />
             <div className="text-box">
               <h3>{t("Seating Statements")}</h3>
@@ -45,8 +61,7 @@ const Homepage = () => {
           <div className="carousel-item">
             <img
               src="https://wpbingo-darion.myshopify.com/cdn/shop/files/slider-1-1.jpg?v=1721019421"
-              className="d-block w-100"
-              height="660vh"
+              alt=""
             />
             <div className="text-box">
               <h3>{t("Elevate Your Space")}</h3>
@@ -60,8 +75,7 @@ const Homepage = () => {
           <div className="carousel-item">
             <img
               src="https://wpbingo-darion.myshopify.com/cdn/shop/files/slider-1-2.jpg?v=1721019421"
-              className="d-block w-100"
-              height="660vh"
+              alt=""
             />
             <div className="text-box">
               <h3>{t("Comfort Redefined")}</h3>
@@ -101,31 +115,35 @@ const Homepage = () => {
       </div>
       <div className="info-box">
         <div className="container ms-auto me-auto">
-          <div className="row ">
-            <div className="col-sm-12 col-md-3 col-lg-3 p-2 ">
+          <div className="row d-flex flex-wrap">
+            <div className="col-6 col-md-3  p-2 text-center ">
               <img
                 src="https://wpbingo-darion.myshopify.com/cdn/shop/files/shipping-w.svg?v=1721787602"
+                alt=""
                 width="20%"
               />
               <span className="p-2">{t("Free Shipping")}</span>
             </div>
-            <div className="col-sm-12 col-md-3 col-lg-3 p-2 ">
+            <div className="col-6 col-md-3 p-2 text-center ">
               <img
                 src="	https://wpbingo-darion.myshopify.com/cdn/shop/files/quality-w.svg?v=1721787675"
+                alt=""
                 width="13%"
               />
               <span className="p-2">{t("Quality Assurance")}</span>
             </div>
-            <div className="col-sm-12 col-md-3 col-lg-3 p-2 ">
+            <div className="col-6 col-md-3 p-2 text-center  ">
               <img
                 src="	https://wpbingo-darion.myshopify.com/cdn/shop/files/return-w.svg?v=1721787674"
+                alt=""
                 width="15%"
               />
               <span className="p-2">{t("Return within 14 days")}</span>
             </div>
-            <div className="col-sm-12 col-md-3 col-lg-3 p-2">
+            <div className="col-6 col-md-3 p-2 text-center ">
               <img
                 src="	https://wpbingo-darion.myshopify.com/cdn/shop/files/support-w.svg?v=1721787675"
+                alt=""
                 width="15%"
               />
               <span className="p-2">{t("Support 24/7")}</span>
@@ -133,22 +151,12 @@ const Homepage = () => {
           </div>
         </div>
       </div>
-
-      <div className="img-box">
-        <div className="img1">
-          <img src="	https://wpbingo-darion.myshopify.com/cdn/shop/files/banner-1.jpg?v=1721030981" />
-        </div>
-        <div className="img2">
-          <div className="img3">
-            <img src="	https://wpbingo-darion.myshopify.com/cdn/shop/files/banner-4.jpg?v=1721098597" />
-          </div>
-          <div className="img4">
-            <img src="https://wpbingo-darion.myshopify.com/cdn/shop/files/banner-5.jpg?v=1721098597" />
-          </div>
-        </div>
-      </div>
+<div className="img-box">
+  <img src="https://wpbingo-darion.myshopify.com/cdn/shop/files/lookbook-2.jpg?v=1721876202" alt="" />
+</div>
       <Category />
-      <Bestseller />
+      <Bestseller onAddToWishlist={handleAddToWishlist}
+        onAddToCart={handleAddToCart}/>
       <Testimonial />
     </div>
   );

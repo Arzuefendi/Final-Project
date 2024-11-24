@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 import "../style/signIn.css";
+import { ThemeContext } from "../ModeContext/Mode";
 
 const SignIn = ({ setIsAuthenticated = { setIsAuthenticated } }) => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({ email: "", password: "" });
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { isDarkMode } = useContext(ThemeContext);
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -53,7 +55,7 @@ const SignIn = ({ setIsAuthenticated = { setIsAuthenticated } }) => {
     }
   };
   return (
-    <div className={`signin-container`}>
+    <div className={`signin-container ${isDarkMode ? "dark-mode" : "light-mode"}`}>
       <div className="signin-box">
         <h2>{t("Sign In")}</h2>
         <Form onSubmit={handleSubmit}>
@@ -61,7 +63,7 @@ const SignIn = ({ setIsAuthenticated = { setIsAuthenticated } }) => {
             <Form.Control
               type="email"
               name="email"
-              placeholder={t("Email adress")}
+              placeholder={t("Email address")}
               className={`form-input ${errors.email && "is-invalid"}`}
               onChange={handleInputChange}
             />

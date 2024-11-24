@@ -45,7 +45,6 @@
 .dark-mode .img-box{
   background-color: rgb(45, 45, 45);
   margin-top: 0%;
-  height: 105vh;
 }
 .dark-mode  .bestseller-section{
   background-color: rgb(45, 45, 45);
@@ -60,4 +59,8 @@
 }
 .dark-mode nav{
   background-color: black !important;
+}
+.dark-mode .admin-button{
+  background-color: white !important;
+  color: black !important;
 }

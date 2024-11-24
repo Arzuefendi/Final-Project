@@ -1,12 +1,13 @@
 .signup-container {
-  min-height: 100vh;
+  height: 110vh;
   background-color: rgb(239, 238, 238);
 }
 .signup-container .signup-box {
   background-color: #161616;
   border-radius: 10px;
-  width: 550px;
+  width: 500px;
   margin-bottom: 5%;
+  margin-top: 8%;
 }
 .signup-container .signup-box h2 {
   color: white;

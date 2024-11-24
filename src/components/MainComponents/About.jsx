@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from "react";
 import "../../style/About.css";
-import Testimonial from "../Testimonial";
 import { useTranslation } from "react-i18next";
 import { ThemeContext } from "../../ModeContext/Mode";
 import { RiFacebookFill } from "react-icons/ri";
@@ -22,12 +21,12 @@ const About = () => {
       </div>
       <div className="container">
         <div className="row">
-          <div className="col-sm-12 col-md-6 col-lg-6">
+          <div className="img1 col-sm-12 col-md-6 col-lg-6 ">
             <img src="https://wpbingo-darion.myshopify.com/cdn/shop/files/banner-31.jpg?v=1721355330" />
           </div>
           <div className=" about-box col-sm-12 col-md-6 col-lg-6">
             <h2>
-              {t("Comfort and Style: The Art of")} <br />
+              {t("Comfort and Style: The Art of")}
               {t("Interior Decor")}{" "}
             </h2>
             <p>
@@ -130,31 +129,7 @@ const About = () => {
       <div className="about-img-box">
         <img src="https://wpbingo-darion.myshopify.com/cdn/shop/files/bg-1.jpg?v=1721359453" />
       </div>
-      <Testimonial />
-      <div className="brand">
-        <div className="container">
-          <div className="row">
-            <div className="col-sm-6 col-md-4 col-lg-2">
-              <img src="	https://wpbingo-darion.myshopify.com/cdn/shop/files/brand-1.png?v=1721360672" />
-            </div>
-            <div className="col-sm-6 col-md-4 col-lg-2">
-              <img src="	https://wpbingo-darion.myshopify.com/cdn/shop/files/brand-2.png?v=1721360672" />
-            </div>
-            <div className="col-sm-6 col-md-4 col-lg-2">
-              <img src="	https://wpbingo-darion.myshopify.com/cdn/shop/files/brand-3.png?v=1721360672" />
-            </div>
-            <div className="col-sm-6 col-md-4 col-lg-2">
-              <img src="	https://wpbingo-darion.myshopify.com/cdn/shop/files/brand-4.png?v=1721360672" />
-            </div>
-            <div className="col-sm-6 col-md-4 col-lg-2">
-              <img src="	https://wpbingo-darion.myshopify.com/cdn/shop/files/brand-5.png?v=1721360672" />
-            </div>
-            <div className="col-sm-6 col-md-4 col-lg-2">
-              <img src="https:/wpbingo-darion.myshopify.com/cdn/shop/files/brand-6.png?v=1721360672" />
-            </div>
-          </div>
-        </div>
-      </div>
+
     </div>
   );
 };

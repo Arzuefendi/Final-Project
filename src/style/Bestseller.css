@@ -71,7 +71,7 @@
 .img-icon:hover {
   transform: scale(1.2);
 }
-@media (max-width: 1010px) {
+@media (max-width: 1125px) {
   .bestseller-section{
     height: 75vh;
   }

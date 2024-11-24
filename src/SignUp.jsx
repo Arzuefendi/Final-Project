@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./style/signUp.css";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
+import { ThemeContext } from "./ModeContext/Mode";
 const SignUp = () => {
   const [formData, setFormData] = useState({
     username: "",
@@ -16,6 +17,8 @@ const SignUp = () => {
   });
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { isDarkMode } = useContext(ThemeContext);
+
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
     setErrors({ ...errors, [e.target.name]: "" });
@@ -57,7 +60,7 @@ const SignUp = () => {
   return (
     <Container
       fluid
-      className={`signup-container d-flex align-items-center justify-content-center`}
+      className={`signup-container d-flex align-items-center justify-content-center ${isDarkMode ? "dark-mode" : "light-mode"}`}
     >
       <div className="signup-box p-4">
         <h2 className="text-center mb-3 fs-1">{t("Sign Up")}</h2>
@@ -90,7 +93,7 @@ const SignUp = () => {
                 <Form.Control
                   type="email"
                   name="email"
-                  placeholder={t("Email adress")}
+                  placeholder={t("Email address")}
                   className={`form-input ${errors.email && "is-invalid"}`}
                   onChange={handleInputChange}
                 />

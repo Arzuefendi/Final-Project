@@ -27,9 +27,9 @@ main img {
   width: 95% !important;
 }
 
-@media (max-width: 1010px) {
+@media (max-width: 1125px) {
   main {
-    height: 70vh;
+    height: 72vh;
     margin-bottom: -8%;
   }
 }
@@ -52,5 +52,40 @@ main img {
 @media (max-width: 895px) {
   main img {
     width: 120% !important;
+  }
+}
+@media (max-width: 856px) {
+  main img {
+    width: 110% !important;
+  }
+  main .carousel-inner {
+    margin-left: -5%;
+  }
+}
+@media (max-width: 768px) {
+  main img {
+    display: none;
+  }
+  h2 {
+    text-align: center;
+  }
+  .text p {
+    margin-left: 3%;
+  }
+}
+@media (max-width: 576px) {
+  .text p {
+    margin-left: 8%;
+  }
+  #paragraph {
+    margin-left: 8% !important;
+  }
+  main svg {
+    display: none;
+  }
+}
+@media (max-width: 440px) {
+  main {
+    height: 60vh !important;
   }
 }/*# sourceMappingURL=Testimotional.css.map */

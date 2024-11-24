@@ -9,7 +9,8 @@ import { Dropdown } from "react-bootstrap";
 import ReactCountryFlag from "react-country-flag";
 import { Modal, Form, Button } from "react-bootstrap";
 import { ThemeContext } from "../../ModeContext/Mode";
-import { MdDarkMode, MdOutlineDarkMode } from "react-icons/md";
+import { MdLightMode  } from "react-icons/md";
+import { BsMoonStarsFill } from "react-icons/bs";
 
 const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
   const navigate = useNavigate();
@@ -181,7 +182,7 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
             className="fs-5 icons"
             onClick={toggleTheme}
           >
-            {isDarkMode ? <MdDarkMode /> : <MdOutlineDarkMode />}
+            {isDarkMode ? <BsMoonStarsFill /> : <MdLightMode />}
           </button>
         </Dropdown>
       </div>
@@ -314,7 +315,7 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
               <Form.Control
                 type="email"
                 name="email"
-                placeholder={t("Email adress")}
+                placeholder={t("Email address")}
                 className="p-2"
                 value={credentials.email}
                 onChange={handleChange}
@@ -356,7 +357,7 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
           </Form>
           <div className="text-center mt-3">
             <p className="text-white">
-              {t("Dont have an account?")}{" "}
+              {t("Don't have an account?")}{" "}
               <Link
                 to="/signup"
                 className="text-white sign-up"

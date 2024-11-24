@@ -6,7 +6,7 @@
     justify-content: space-around;  
     height: 86vh;
     width: 100%;
-    margin-top: 17%;
+    margin-top: 15%;
 }
   
    .product-detail .product-info {
@@ -15,8 +15,8 @@
       height: 70vh;
     }
     .product-detail .product-info .img-fluid{
-        height: 63vh;
-        width:80%;
+        height: 70vh;
+        width:85%;
         border: none;
         border-radius: 15px !important;
        
@@ -24,7 +24,6 @@
     }
     .product-detail .product-description {
       flex: 6;  
-      margin-top: 1%;
     
     }
     .product-detail .product-description h3{
@@ -58,4 +57,7 @@
         font-size: 1.8rem;
         margin-top: 1%;
         color: red !important;
+    }
+    .product-button .shop{
+        width: 100%;
     }

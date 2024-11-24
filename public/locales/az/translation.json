@@ -30,7 +30,7 @@
     "Our Categories":"Kateqoriyalar",
     "From home to contract, get inspired and design!": "İlham alın və dizayn edin!",
     "Bestseller": "Ən çox satılanlar",
-    "Experience the best products at our store!": "Ən yaxşı məhsulları mağazamızda yaşayın!",
+    "Experience the best products at our store!": "Ən yaxşı məhsulları mağazamızdan alın!",
     "Desert Chair-Kids":"Kreslo-Uşaqlar üçün",
     "Drop Dining Chair":"Yemək stulu",
     "Egg Dining Table":"Yemək Masası",
@@ -104,7 +104,7 @@
     "Sort by:":"Sırala:",
     "Low to High":"Aşağıdan Yüksəyə",
     "High to Low":"Yüksəkdən Aşağıya", 
-    "Email adress":"Email ünvanı",
+    "Email address":"Email ünvanı",
     "Password":"Şifrə",
     "Sign In":"Daxil olun",
     "Don't have an account?":"Hesabınız yoxdur?",
@@ -114,5 +114,12 @@
     "Quick sale: 20% off products purchased today":"Bu gün alınan məhsullara 20% endirim",
     "Estimated delivery time: 10-20 days":"Təxmini çatdırılma müddəti: 10-20 gün",
     "Add to Cart":"Səbətə əlavə et",
-    "Total":"Cəmi"
+    "Total":"Cəmi",
+    "Admin Login":"Admin Girişi",
+    "Login":"Giriş",
+    "Sign in":"Daxil olun",
+    "Product Added To Wishlist":"Məhsul İstək Siyahısına Əlavə edildi",
+    "Product Added To Cart":"Məhsul Səbətə Əlavə edildi",
+    "Your payment has been successfully completed!":"Ödənişiniz uğurla tamamlandı!",
+    "You may also like":"Tövsiyə olunan məhsullar"
 }

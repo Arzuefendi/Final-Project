@@ -1,5 +1,5 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import "../style/Bestseller.css";
 import { useTranslation } from "react-i18next";
 import { FiShoppingCart } from "react-icons/fi";
@@ -7,11 +7,13 @@ import { IoMdHeartEmpty } from "react-icons/io";
 
 const apiKey =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtneGd6eWJ6cmtucHZlZXR4YmtxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjg1NzUxNDMsImV4cCI6MjA0NDE1MTE0M30.c0Kyapgbmrxify5PPgZUKhM7HPKNzTt6cfHoRdDP1T8";
-const Bestseller = () => {
+
+const Bestseller = ({ onAddToWishlist, onAddToCart }) => {
   const { t, i18n } = useTranslation();
   const [data, setData] = useState([]);
+
   useEffect(() => {
-    const handleGet = async () => {
+    const fetchData = async () => {
       try {
         const response = await axios.get(
           "https://kgxgzybzrknpveetxbkq.supabase.co/rest/v1/productss?select=*",
@@ -22,15 +24,15 @@ const Bestseller = () => {
             },
           }
         );
-        console.log(response.data);
         setData(response.data);
       } catch (error) {
         console.error(error);
       }
     };
 
-    handleGet();
+    fetchData();
   }, []);
+
   return (
     <div className="bestseller-section">
       <h3>{t("Bestseller")}</h3>
@@ -50,8 +52,14 @@ const Bestseller = () => {
                     alt={translatedName}
                   />
                   <div className="bestseller-icons">
-                    <IoMdHeartEmpty className="img-icon" />
-                    <FiShoppingCart className="img-icon" />
+                    <IoMdHeartEmpty
+                      className="img-icon"
+                      onClick={() => onAddToWishlist(el)}
+                    />
+                    <FiShoppingCart
+                      className="img-icon"
+                      onClick={() => onAddToCart(el)}
+                    />
                   </div>
                   <p className="text-center">{translatedName}</p>
                   <p className="text-center">

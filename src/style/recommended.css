@@ -1,0 +1,38 @@
+
+.recommended{
+    margin-top: 9%;
+    height: 130vh;
+}
+.recommended .container{
+    margin-top: 10%;
+}
+.recommended .product-card {
+    padding: 15px;
+    text-align: center;
+    background-color: transparent;
+    transition: transform 0.3s ease;
+  }
+  
+  
+  .recommended .img-fluid {
+    width: 100%;
+    height: 40vh;
+    border-radius: 10px;
+  }
+  
+  
+  .recommended .img-icon {
+    font-size: 24px;
+    cursor: pointer;
+  }
+  .recommended .bestseller-icons {
+    position: absolute;
+    top: 30px;
+    right: 23px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
