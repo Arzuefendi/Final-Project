@@ -36,12 +36,10 @@ const SignIn = ({ setIsAuthenticated = { setIsAuthenticated } }) => {
       setErrors(newErrors);
       return;
     }
-
     const user = storedUsers.find(
       (user) =>
         user.email === formData.email && user.password === formData.password
     );
-    console.log(user);
 
     if (user) {
       setIsAuthenticated(true);
@@ -55,7 +53,9 @@ const SignIn = ({ setIsAuthenticated = { setIsAuthenticated } }) => {
     }
   };
   return (
-    <div className={`signin-container ${isDarkMode ? "dark-mode" : "light-mode"}`}>
+    <div
+      className={`signin-container ${isDarkMode ? "dark-mode" : "light-mode"}`}
+    >
       <div className="signin-box">
         <h2>{t("Sign In")}</h2>
         <Form onSubmit={handleSubmit}>

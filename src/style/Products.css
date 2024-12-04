@@ -67,7 +67,9 @@
   position: relative;
   overflow: hidden;
 }
-
+.filter-section .slider{
+  width: 100%;
+}
 .products .product-card img {
   width: 100%;
   display: block;
@@ -111,4 +113,46 @@
 }
 .products nav{
   background-color: transparent;
+}
+.filter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; 
+}
+
+@media (min-width: 768px) {
+  .filter-form {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .filter-section {
+    flex: 1 1 45%; 
+    margin: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .products-section {
+    display: block;
+    text-align: center; 
+  }
+  .filter-form{
+    height: 73vh !important;
+  }
+
+  .products-img {
+    margin-top: 0;
+  }
+  .filter-section .slider{
+    width: 300% !important;
+  }
+  .filter-section p{
+    width: 100% !important;
+  }
+  .filter-section .brand-box button{
+    width: 100%;
+  }
+  /* .products-img{
+    margin-top: -40%;
+  } */
 }

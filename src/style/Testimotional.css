@@ -27,10 +27,14 @@ main img {
   width: 95% !important;
 }
 
-@media (max-width: 1125px) {
+@media (max-width: 1200px) {
   main {
-    height: 72vh;
-    margin-bottom: -8%;
+    height: 60vh;
+  }
+}
+@media (max-width: 1024px) {
+  main {
+    height: 80vh;
   }
 }
 @media (max-width: 977px) {
@@ -49,9 +53,17 @@ main img {
     margin-left: -20%;
   }
 }
+@media (max-width: 920px) {
+  main {
+    height: 50vh;
+  }
+}
 @media (max-width: 895px) {
   main img {
     width: 120% !important;
+  }
+  main {
+    height: 60vh;
   }
 }
 @media (max-width: 856px) {
@@ -63,6 +75,9 @@ main img {
   }
 }
 @media (max-width: 768px) {
+  main {
+    height: 60vh;
+  }
   main img {
     display: none;
   }
@@ -74,6 +89,12 @@ main img {
   }
 }
 @media (max-width: 576px) {
+  main {
+    height: 75vh;
+  }
+  main h2 {
+    margin-top: 0%;
+  }
   .text p {
     margin-left: 8%;
   }
@@ -86,6 +107,6 @@ main img {
 }
 @media (max-width: 440px) {
   main {
-    height: 60vh !important;
+    height: 65vh;
   }
 }/*# sourceMappingURL=Testimotional.css.map */

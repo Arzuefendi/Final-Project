@@ -19,7 +19,7 @@ const About = () => {
           {t("Home")}/{t("About us")}
         </h2>
       </div>
-      <div className="container">
+      <div className="container about-info-box">
         <div className="row">
           <div className="img1 col-sm-12 col-md-6 col-lg-6 ">
             <img src="https://wpbingo-darion.myshopify.com/cdn/shop/files/banner-31.jpg?v=1721355330" />
@@ -129,7 +129,6 @@ const About = () => {
       <div className="about-img-box">
         <img src="https://wpbingo-darion.myshopify.com/cdn/shop/files/bg-1.jpg?v=1721359453" />
       </div>
-
     </div>
   );
 };

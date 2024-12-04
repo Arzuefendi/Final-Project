@@ -1,14 +1,19 @@
 .checkout {
-    margin-top: 13%;
-    
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150vh;
 }
-
 .needs-validation {
-    border: none !important;
-    width: 70% !important;
-    height: auto;
-    margin-bottom: 20%;
+  border: none !important;
+  width: 70% !important;
+  height: auto;
+  margin-bottom: 5%;
 }
 
-
-
+.checkout .container {
+  max-width: 800px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

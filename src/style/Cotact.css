@@ -119,4 +119,42 @@ form {
 .contact .map {
   width: 100%;
   height: 55vh;
+}
+
+@media (max-width: 1024px) {
+  .contact .message {
+    height: 90vh;
+  }
+}
+@media (max-width: 990px) {
+  .contact .container {
+    height: auto;
+  }
+  .contact form button {
+    width: auto;
+    height: auto;
+  }
+  .contact .message {
+    height: 80vh;
+  }
+}
+@media (max-width: 576px) {
+  .contact form button {
+    width: auto;
+    height: auto;
+  }
+  .contact form {
+    height: auto;
+  }
+  .contact .message {
+    height: 76vh;
+  }
+}
+@media (max-width: 500px) {
+  .contact-header h2 {
+    top: 50% !important;
+  }
+  .location {
+    margin-top: 25% !important;
+  }
 }/*# sourceMappingURL=Cotact.css.map */

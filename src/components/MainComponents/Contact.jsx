@@ -13,14 +13,14 @@ const Contact = () => {
     window.scrollTo(0, 0);
   }, []);
   return (
-    <div className={`contact ${isDarkMode ? 'dark-mode' : 'light-mode'} `}>
+    <div className={`contact ${isDarkMode ? "dark-mode" : "light-mode"} `}>
       <div className="contact-header text-center mt-5">
         <img src="	https://wpbingo-darion.myshopify.com/cdn/shop/files/bg-breadcrumb.jpg?v=1721207637" />
         <h2>
           {t("Home")} /{t("Contact")}{" "}
         </h2>
       </div>
-      <div className="container">
+      <div className="container location">
         <div className="row">
           <div className="col-sm-12 col-md-6 col-lg-3">
             <FaLocationDot />
@@ -68,20 +68,20 @@ const Contact = () => {
         <form>
           <div className="container">
             <div className="row">
-              <div className="col">
+              <div className="col-sm-12 col-md-6 col-lg-6">
                 <input type="text" placeholder={t("Name")} />
               </div>
-              <div className="col">
+              <div className="col-sm-12 col-md-6 col-lg-6">
                 <input type="number" placeholder={t("Mobile Number")} />
               </div>
             </div>
             <div className="row">
-              <div className="col">
+              <div className="col-12">
                 <input type="email" placeholder="Mail ID" />
               </div>
             </div>
             <div className="row">
-              <div className="col">
+              <div className="col-12">
                 <textarea placeholder={t("Additional Information")}></textarea>
               </div>
             </div>

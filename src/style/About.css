@@ -7,8 +7,9 @@
   height: auto;
 }
 .about .container {
-  margin-top: 5%;
-  height: 70vh;
+  margin-top: 3%;
+  height: auto;
+  margin-bottom: 3%;
 }
 .about-box h2 {
   padding-left: 7%;
@@ -115,26 +116,19 @@
     width: 100%;
   }
   .about .container .row .img1 img{
-    height: 50vh;
+    height: 40vh;
     width: 120%;
     margin-left: -13%;
     
   }
 }
-@media (max-width: 768px){
-  .team-box{
-    margin-top: -20%;
-  }
-  .about .container .row .img1 img{
-    margin-left: -10%;
-    height: 40vh;
-    
+@media (max-width: 630px){
+  .about-info-box .img1 img{
+    display: block;
+    border-radius: 0px;
   }
 }
 @media (max-width: 500px){
-  .team-box{
-    margin-top: 30%;
-  }
   .contact-header h2{
   margin-top: -20%;
   }
@@ -143,10 +137,9 @@
     height: 35vh;
     
   }
-
-}
-@media (max-width: 380px){
   .team-box{
-    margin-top: 35%;
+    margin-top: 30% !important;
   }
+  
+
 }

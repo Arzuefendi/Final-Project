@@ -13,9 +13,15 @@ const AdminLogin = () => {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    const savedCredentials = localStorage.getItem('adminCredentials');
+    const savedCredentials = localStorage.getItem("adminCredentials");
     if (!savedCredentials) {
-      localStorage.setItem('adminCredentials', JSON.stringify({ email: 'arzuefendi0@gmail.com', password: 'arzuefendi123' }));
+      localStorage.setItem(
+        "adminCredentials",
+        JSON.stringify({
+          email: "arzuefendi0@gmail.com",
+          password: "arzuefendi123",
+        })
+      );
     }
   }, []);
 
@@ -42,7 +48,7 @@ const AdminLogin = () => {
   return (
     <div className={`admin-login ${isDarkMode ? "dark-mode" : "light-mode"} `}>
       <form onSubmit={handleSubmit}>
-        <h2 className="text-center">{t('Admin Login')}</h2>
+        <h2 className="text-center">{t("Admin Login")}</h2>
         {error && <div className="error-message">{error}</div>}
         <div className="form-floating">
           <input
@@ -53,7 +59,7 @@ const AdminLogin = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <label htmlFor="floatingInput">{t('Email address')}</label>
+          <label htmlFor="floatingInput">{t("Email address")}</label>
         </div>
         <div className="form-floating">
           <input
@@ -64,10 +70,10 @@ const AdminLogin = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <label htmlFor="floatingPassword">{t('Password')}</label>
+          <label htmlFor="floatingPassword">{t("Password")}</label>
         </div>
         <button className="admin-button w-100 py-2" type="submit">
-          {t('Login')}
+          {t("Login")}
         </button>
       </form>
     </div>

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState} from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../../style/Home.css";
 import Bestseller from "../Bestseller";
 import Testimonial from "../Testimonial";
@@ -6,36 +6,21 @@ import Category from "../Category";
 import { useTranslation } from "react-i18next";
 import { ThemeContext } from "../../ModeContext/Mode";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify"; 
 const Homepage = () => {
   const { t } = useTranslation();
   const { isDarkMode } = useContext(ThemeContext);
   const navigate = useNavigate();
-  const [wishlist, setWishlist] = useState([]);
-  const [cart, setCart] = useState([]);
- 
-  const handleAddToWishlist = (product) => {
-    if (!wishlist.some((item) => item.id === product.id)) {
-      setWishlist([...wishlist, product]);
-      toast.success(t('Product Added To Wishlist'));  
-    }
-  };
-  
-  const handleAddToCart = (product) => {
-    if (!cart.some((item) => item.id === product.id)) {
-      setCart([...cart, product]);
-      toast.success(t('Product Added To Cart'));  
-    }
-  };
+
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   const handleButtonClick = () => {
-    navigate("/products"); 
-};
+    navigate("/products");
+  };
   return (
-    <div className={`main ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
+    <div className={`main ${isDarkMode ? "dark-mode" : "light-mode"}`}>
       <div
         id="carouselExampleAutoplaying"
         className="carousel slide"
@@ -54,7 +39,9 @@ const Homepage = () => {
                   "Feeling comfortable and airy when sitting all day.To own space"
                 )}
               </p>
-              <button className="btn" onClick={handleButtonClick}>{t("Shop now")}</button>
+              <button className="btn" onClick={handleButtonClick}>
+                {t("Shop now")}
+              </button>
             </div>
           </div>
 
@@ -68,7 +55,9 @@ const Homepage = () => {
               <p>
                 {t("Experience Choose a beautiful bed for you and your family")}
               </p>
-              <button className="btn" onClick={handleButtonClick}>{t("Shop now")}</button>
+              <button className="btn" onClick={handleButtonClick}>
+                {t("Shop now")}
+              </button>
             </div>
           </div>
 
@@ -84,7 +73,9 @@ const Homepage = () => {
                   "Let's experience and see extremely beautiful sofa models..."
                 )}
               </p>
-              <button className="btn" onClick={handleButtonClick} >{t("Shop now")}</button>
+              <button className="btn" onClick={handleButtonClick}>
+                {t("Shop now")}
+              </button>
             </div>
           </div>
         </div>
@@ -124,7 +115,7 @@ const Homepage = () => {
               />
               <span className="p-2">{t("Free Shipping")}</span>
             </div>
-            <div className="col-6 col-md-3 p-2 text-center ">
+            <div className="col-6 col-md-3 d-none d-sm-block p-2 text-center">
               <img
                 src="	https://wpbingo-darion.myshopify.com/cdn/shop/files/quality-w.svg?v=1721787675"
                 alt=""
@@ -132,7 +123,7 @@ const Homepage = () => {
               />
               <span className="p-2">{t("Quality Assurance")}</span>
             </div>
-            <div className="col-6 col-md-3 p-2 text-center  ">
+            <div className="col-6 col-md-3 d-none d-sm-block p-2 text-center  ">
               <img
                 src="	https://wpbingo-darion.myshopify.com/cdn/shop/files/return-w.svg?v=1721787674"
                 alt=""
@@ -140,7 +131,7 @@ const Homepage = () => {
               />
               <span className="p-2">{t("Return within 14 days")}</span>
             </div>
-            <div className="col-6 col-md-3 p-2 text-center ">
+            <div className="col-6 col-md-3 d-none d-sm-block p-2 text-center ">
               <img
                 src="	https://wpbingo-darion.myshopify.com/cdn/shop/files/support-w.svg?v=1721787675"
                 alt=""
@@ -151,12 +142,14 @@ const Homepage = () => {
           </div>
         </div>
       </div>
-<div className="img-box">
-  <img src="https://wpbingo-darion.myshopify.com/cdn/shop/files/lookbook-2.jpg?v=1721876202" alt="" />
-</div>
+      <div className="img-box">
+        <img
+          src="https://wpbingo-darion.myshopify.com/cdn/shop/files/lookbook-2.jpg?v=1721876202"
+          alt=""
+        />
+      </div>
       <Category />
-      <Bestseller onAddToWishlist={handleAddToWishlist}
-        onAddToCart={handleAddToCart}/>
+      <Bestseller/>
       <Testimonial />
     </div>
   );

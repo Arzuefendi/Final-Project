@@ -44,7 +44,9 @@ const Recommended = () => {
   return (
     <div className={`recommended ${isDarkMode ? "dark-mode" : "light-mode"} `}>
       <div style={{ textAlign: "center" }}>
-        <FaCheckCircle style={{ color: "green", fontSize: "70px", marginTop: "60px" }} />
+        <FaCheckCircle
+          style={{ color: "green", fontSize: "70px", marginTop: "60px" }}
+        />
         <h2 style={{ color: "green", marginTop: "20px" }}>
           {t("Your payment has been successfully completed!")}
         </h2>

@@ -1,5 +1,5 @@
 .blog{
-  background-color: #ebebeb;
+  background-color: #fafafa;
 }
 .blog .card img {
   height: 35vh;
@@ -30,4 +30,10 @@ p {
 }
 .blog .card .card-body {
   height: 26vh;
+}
+@media(max-width:990px){
+  .blog .container{
+    height: auto;
+    margin-bottom: 5%;
+  }
 }

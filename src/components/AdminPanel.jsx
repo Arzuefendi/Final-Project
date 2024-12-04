@@ -38,14 +38,13 @@ const AdminPanel = () => {
           },
         }
       );
-      console.log("Fetched blogs:", response.data); // Log the response to inspect its structure
+      console.log("Fetched blogs:", response.data); 
 
-      // Make sure response.data is an array and contains valid data
       if (Array.isArray(response.data)) {
-        setBlogs(response.data); // Update state only if it's a valid array
+        setBlogs(response.data);
       } else {
         console.error("Response data is not an array:", response.data);
-        setBlogs([]); // Fallback to empty array if the response is not as expected
+        setBlogs([]); 
       }
     } catch (error) {
       console.error("Error fetching blogs:", error);
@@ -58,7 +57,7 @@ const AdminPanel = () => {
 
   const saveBlog = async () => {
     try {
-      if (editMode && selectedBlog && selectedBlog.id) { // selectedBlog yoxlanır
+      if (editMode && selectedBlog && selectedBlog.id) {
         await axios.patch(
           `https://kgxgzybzrknpveetxbkq.supabase.co/rest/v1/blog?id=eq.${selectedBlog.id}`,
           blogData,
@@ -70,7 +69,7 @@ const AdminPanel = () => {
             },
           }
         );
-  
+
         const updatedBlogs = blogs.map((blog) =>
           blog.id === selectedBlog.id ? { ...blog, ...blogData } : blog
         );
@@ -79,7 +78,7 @@ const AdminPanel = () => {
       } else {
         const currentDate = new Date().toISOString();
         const blogWithDate = { ...blogData, date: currentDate };
-  
+
         const response = await axios.post(
           "https://kgxgzybzrknpveetxbkq.supabase.co/rest/v1/blog",
           blogWithDate,
@@ -93,7 +92,7 @@ const AdminPanel = () => {
         );
         setBlogs([...blogs, response.data[0]]);
       }
-  
+
       handleClose();
       setBlogData({
         image: "",
@@ -110,7 +109,6 @@ const AdminPanel = () => {
       toast.error("Blogu saxlarkən xəta baş verdi");
     }
   };
-  
 
   const handleDelete = async (id) => {
     if (!id) {
@@ -154,7 +152,7 @@ const AdminPanel = () => {
     setEditMode(true);
     handleShow();
   };
-  
+
   const handleLogout = () => {
     navigate("/admin");
   };
@@ -166,7 +164,7 @@ const AdminPanel = () => {
     >
       <h1 className="text-white dashboard">{t("Dashboard")}</h1>
       <Button
-        variant="dark"
+        variant="danger"
         className="mb-3"
         onClick={() => {
           setEditMode(false);
@@ -176,7 +174,7 @@ const AdminPanel = () => {
         {t("New Blog")}
       </Button>
 
-      <Button variant="dark" className="mb-3 ms-2" onClick={handleLogout}>
+      <Button variant="danger" className="mb-3 ms-2" onClick={handleLogout}>
         {t("Logout")}
       </Button>
 
@@ -193,8 +191,8 @@ const AdminPanel = () => {
           </tr>
         </thead>
         <tbody>
-          {Array.isArray(blogs) && blogs.length > 0 ? (
-            blogs.map((blog) => (
+          {Array.isArray(blogs) && blogs?.length > 0 ? (
+            blogs?.map((blog) => (
               <tr key={blog.id}>
                 <td>{blog.id}</td>
                 <td>
@@ -205,10 +203,13 @@ const AdminPanel = () => {
                 <td>{blog.description}</td>
                 <td>{new Date(blog.date).toLocaleDateString()}</td>
                 <td>
-                  <Button variant="dark" onClick={() => handleDelete(blog.id)}>
+                  <Button
+                    variant="danger"
+                    onClick={() => handleDelete(blog.id)}
+                  >
                     <FaTrash />
                   </Button>
-                  <Button variant="dark" onClick={() => handleEdit(blog)}>
+                  <Button variant="danger" onClick={() => handleEdit(blog)}>
                     <FaEdit />
                   </Button>
                 </td>

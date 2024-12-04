@@ -1,22 +1,28 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom"; // useParams ilə URL parametrini əldə edirik
+import { useNavigate, useParams } from "react-router-dom";
 import "../style/productDetails.css";
 import { FaStar } from "react-icons/fa6";
 import { FaRegStarHalfStroke } from "react-icons/fa6";
 import { TbTruckDelivery } from "react-icons/tb";
 import { MdOutlineAssignmentReturn } from "react-icons/md";
-import { IoMdHeartEmpty } from "react-icons/io";
+import { IoMdHeart, IoMdHeartEmpty } from "react-icons/io";
 import { useTranslation } from "react-i18next";
 import { ThemeContext } from "../ModeContext/Mode";
+import { CartContext } from "./AddToCartContext";
+import { toast } from "react-toastify";
+import { WishlistContext } from "./WishlistContext";
 
 const ProductDetails = () => {
-  const { productId } = useParams(); // URL-dən məhsul ID-ni alırıq
+  const { productId } = useParams();
   const [product, setProduct] = useState(null);
   const { t } = useTranslation();
   const { isDarkMode } = useContext(ThemeContext);
   const [count, setCount] = useState(1);
   const navigate = useNavigate();
+  const { dispatch } = useContext(CartContext);
+  const { wishlist, addToWishlist, removeFromWishlist } =
+    useContext(WishlistContext);
 
   const apiKey =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtneGd6eWJ6cmtucHZlZXR4YmtxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjg1NzUxNDMsImV4cCI6MjA0NDE1MTE0M30.c0Kyapgbmrxify5PPgZUKhM7HPKNzTt6cfHoRdDP1T8";
@@ -33,16 +39,16 @@ const ProductDetails = () => {
             },
           }
         );
-        setProduct(response.data[0]); // Alınan məhsul məlumatlarını state-ə yığırıq
+        setProduct(response.data[0]);
       } catch (error) {
         console.error("Error fetching product details", error);
       }
     };
 
     fetchProductDetails();
-  }, [productId]); // productId dəyişdikdə yenidən məlumatları çəkirik
+  }, [productId]);
 
-  if (!product) return <div>Loading...</div>; // Yüklənmə zamanı "Loading..." mesajı
+  if (!product) return <div>Loading...</div>;
 
   const increment = () => {
     setCount(count + 1);
@@ -52,7 +58,22 @@ const ProductDetails = () => {
   };
 
   const handleShopNow = () => {
-    navigate("/checkout"); 
+    navigate("/checkout");
+  };
+  const handleAddToCart = () => {
+    dispatch({ type: "ADD_TO_CART", payload: product });
+    toast.success(`Successfully added to cart!`);
+  };
+  const isInWishlist = wishlist.some((item) => item.id === product.id);
+  
+  const toggleWishlist = (product) => {
+    if (wishlist.some((item) => item.id === product.id)) {
+      removeFromWishlist(product.id);
+      toast.info("Product removed from wishlist!");
+    } else {
+      addToWishlist(product);
+      toast.success("Product added to wishlist!");
+    }
   };
   return (
     <div
@@ -97,9 +118,25 @@ const ProductDetails = () => {
                   <button onClick={decrement}>-</button>
                   <span>{count}</span>
                   <button onClick={increment}>+</button>
-                  <button className="add"> {t("Add to Cart")}</button>
-                  <IoMdHeartEmpty />
-                  <button className="shop" onClick={handleShopNow}> {t("Shop now")}</button>
+                  <button className="add" onClick={handleAddToCart}>
+                    {" "}
+                    {t("Add to Cart")}
+                  </button>
+                  {isInWishlist ? (
+                    <IoMdHeart
+                      className="img-icon heart-icon active"
+                      onClick={() => toggleWishlist(product)}
+                    />
+                  ) : (
+                    <IoMdHeartEmpty
+                      className="img-icon heart-icon"
+                      onClick={() => toggleWishlist(product)}
+                    />
+                  )}
+                  <button className="shop" onClick={handleShopNow}>
+                    {" "}
+                    {t("Shop now")}
+                  </button>
                   <h5 className="text-center">
                     {t("Total")}: $
                     {parseFloat(product.price.replace("$", "")) * count}

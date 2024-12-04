@@ -9,8 +9,10 @@ import { Dropdown } from "react-bootstrap";
 import ReactCountryFlag from "react-country-flag";
 import { Modal, Form, Button } from "react-bootstrap";
 import { ThemeContext } from "../../ModeContext/Mode";
-import { MdLightMode  } from "react-icons/md";
+import { MdLightMode } from "react-icons/md";
 import { BsMoonStarsFill } from "react-icons/bs";
+import { CartContext } from "../AddToCartContext";
+import { WishlistContext } from "../WishlistContext";
 
 const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
   const navigate = useNavigate();
@@ -23,13 +25,14 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
   const { isDarkMode, toggleTheme } = useContext(ThemeContext);
   const [showSignIn, setShowSignIn] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
-  // const [menuOpen, setMenuOpen] = useState(false);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [errors, setErrors] = useState({ email: "", password: "" });
   const [loginError, setLoginError] = useState("");
-  // const [navBackground, setNavBackground] = useState(false);
   const [credentials, setCredentials] = useState({ email: "", password: "" });
+  const [cartCount, setCartCount] = useState(0);
+  const { state } = useContext(CartContext);
+  const { wishlistCount } = useContext(WishlistContext);
 
   const handleSignInModalOpen = () => setShowSignIn(true);
   const handleSignInModalClose = () => {
@@ -46,24 +49,6 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
     setUsername("");
     setEmail("");
   };
-  // useEffect(() => {
-  //   setMenuOpen(false);
-  // }, [location]);
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //       if (window.scrollY > 70) {
-  //           setNavBackground(true);
-  //       } else {
-  //           setNavBackground(false);
-  //       }
-  //   };
-
-  //   window.addEventListener('scroll', handleScroll);
-
-  //   return () => {
-  //       window.removeEventListener('scroll', handleScroll);
-  //   };
-  // }, []);
 
   useEffect(() => {
     const authStatus = localStorage.getItem("isAuthenticated");
@@ -130,6 +115,9 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
     }
   };
 
+  const addToCart = () => {
+    setCartCount((prevCount) => prevCount + 1);
+  };
   return (
     <div>
       <div className="nav-head  d-flex justify-content-between fixed-top align-items-center mx-3 my-2">
@@ -229,11 +217,6 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
                       {t("FAQ")}
                     </Link>
                   </li>
-                  <li>
-                    <Link to="/gallery" className="dropdown-item">
-                      {t("Gallery")}
-                    </Link>
-                  </li>
                 </ul>
               </li>
               <li className="nav-item">
@@ -274,31 +257,50 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
                 </Link>
               </li>
             </ul>
-            <div className="icon me-5">
-              <IoMdHeartEmpty
-                className="m-2"
-                onClick={() => navigate("/wishlist")}
-              />
-              <FiShoppingCart
-                className="m-3"
-                onClick={() => navigate("/cart")}
-              />
-              {isAuthenticated ? (
-                username && (
-                  <button
-                    variant="outline-light"
-                    className="profile-button"
-                    onClick={() => setShowProfile(true)}
-                  >
-                    <CgProfile />
-                    {username}
-                  </button>
-                )
-              ) : (
-                <>
-                  <CgProfile className="m-2" onClick={handleSignInModalOpen} />
-                </>
-              )}
+            <div className="icon d-flex align-items-center justify-content-end">
+              <div className="heart-icon position-relative mx-3">
+                <IoMdHeartEmpty
+                  onClick={() => navigate("/wishlist")}
+                  className="icon-size cursor-pointer"
+                />
+                {wishlistCount > 0 && (
+                  <span className="badge position-absolute top-0 end-0">
+                    {wishlistCount}
+                  </span>
+                )}
+              </div>
+
+              <div className="cart-icon position-relative mx-3">
+                <FiShoppingCart
+                  onClick={() => navigate("/cart")}
+                  className="icon-size cursor-pointer"
+                />
+                {state.cartCount > 0 && (
+                  <span className="badge position-absolute top-0 end-0">
+                    {state.cartCount}
+                  </span>
+                )}
+              </div>
+
+              <div className="profile-icon">
+                {isAuthenticated ? (
+                  username && (
+                    <button
+                      variant="outline-light"
+                      className="profile-button d-flex align-items-center"
+                      onClick={() => setShowProfile(true)}
+                    >
+                      <CgProfile className="m-2" />
+                      {username}
+                    </button>
+                  )
+                ) : (
+                  <CgProfile
+                    className="m-2 icon-size cursor-pointer"
+                    onClick={handleSignInModalOpen}
+                  />
+                )}
+              </div>
             </div>
           </div>
         </div>

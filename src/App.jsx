@@ -9,7 +9,6 @@ import Blog from "./components/MainComponents/Blog.jsx";
 import About from "./components/MainComponents/About.jsx";
 import Contact from "./components/MainComponents/Contact.jsx";
 import Faq from "./components/Faq.jsx";
-import Gallery from "./components/Gallery.jsx";
 import Wishlist from "./components/Wishlist.jsx";
 import Cart from "./components/Cart.jsx";
 import ScrollToTop from "./components/MainComponents/ScrollToTop.jsx";
@@ -20,43 +19,37 @@ import "./style/darkMode.css"
 import ProductDetails from "./components/ProductDetails.jsx";
 import AdminLogin from "./components/AdminLogin.jsx";
 import AdminPanel from "./components/AdminPanel.jsx";
-import { ToastContainer } from "react-toastify";  // Import ToastContainer here
-import 'react-toastify/dist/ReactToastify.css'; // Import Toastify CSS
+import { ToastContainer } from "react-toastify"; 
+import 'react-toastify/dist/ReactToastify.css'; 
 import { useState } from "react";
 import Recommended from "./components/Recommended.jsx";
 import Checkout from "./components/Checkout.jsx";
+import { CartProvider } from "./components/AddToCartContext.jsx";
+import { WishlistProvider } from "./components/WishlistContext.jsx";
 
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [wishlist, setWishlist] = useState([]);
-
-  // Wishlistə məhsul əlavə etmə funksiyası
-  const handleAddToWishlist = (product) => {
-    if (!wishlist.some((item) => item.id === product.id)) {
-      setWishlist([...wishlist, product]);
-    }
-  };
   return (
     <>
+     <CartProvider>
+      <WishlistProvider>
       <ThemeProvider>
         <Navbar
           isAuthenticated={isAuthenticated}
           setIsAuthenticated={setIsAuthenticated}
         />
-        {/* ToastContainer component */}
         <ToastContainer position="bottom-left" autoClose={1500} hideProgressBar={false} newestOnTop={false} closeOnClick pauseOnFocusLoss draggable pauseOnHover />
         
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path="/products" element={<Products />} />
+          <Route path="/products" element={<Products/>} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/faq" element={<Faq />} />
-          <Route path="/gallery" element={<Gallery />} />
           <Route path="/product/:productId" element={<ProductDetails />} />
-          <Route path="/wishlist" element={<Wishlist wishlist={wishlist}/>} />
+          <Route path="/wishlist" element={<Wishlist/>} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signin" element={<SignIn setIsAuthenticated={setIsAuthenticated}/>} />
@@ -70,6 +63,8 @@ function App() {
         <ScrollToTop />
         <Footer />
       </ThemeProvider>
+      </WishlistProvider>
+      </CartProvider>
     </>
   );
 }

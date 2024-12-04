@@ -35,14 +35,14 @@ const Blog = () => {
     window.scrollTo(0, 0);
   }, []);
   return (
-    <div className={`blog ${isDarkMode ? "dark-mode" : "light-mode"} `}>
+    <div className={`blog ${isDarkMode ? "dark-mode" : "light-mode"}`}>
       <div className="contact-header text-center mt-5">
         <img src="	https://wpbingo-darion.myshopify.com/cdn/shop/files/bg-breadcrumb.jpg?v=1721207637" />
         <h2>
           {t("Home")}/{t("Blog")}{" "}
         </h2>
       </div>
-      <div className="container">
+      <div className="container mt-5">
         <div className="row">
           {data.map((el) => (
             <div className="col-sm-12 col-md-6 col-lg-4">
