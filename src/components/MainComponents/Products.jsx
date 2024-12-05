@@ -4,7 +4,7 @@ import axios from "axios";
 import { useTranslation } from "react-i18next";
 import { ThemeContext } from "../../ModeContext/Mode";
 import { FiShoppingCart } from "react-icons/fi";
-import { IoMdHeart, IoMdHeartEmpty } from "react-icons/io"; 
+import { IoMdHeart, IoMdHeartEmpty } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { CartContext } from "../AddToCartContext";
 import { toast } from "react-toastify";
@@ -15,12 +15,15 @@ const Products = () => {
   const { t } = useTranslation();
   const { isDarkMode } = useContext(ThemeContext);
   const { dispatch } = useContext(CartContext);
-  const { wishlist, addToWishlist, removeFromWishlist } = useContext(WishlistContext); 
-  const apiKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtneGd6eWJ6cmtucHZlZXR4YmtxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjg1NzUxNDMsImV4cCI6MjA0NDE1MTE0M30.c0Kyapgbmrxify5PPgZUKhM7HPKNzTt6cfHoRdDP1T8";
+  const { wishlist, addToWishlist, removeFromWishlist } =
+    useContext(WishlistContext);
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 9;
   const [price, setPrice] = useState(10);
+  const [availability, setAvailability] = useState("all");
+  const apiKey =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtneGd6eWJ6cmtucHZlZXR4YmtxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjg1NzUxNDMsImV4cCI6MjA0NDE1MTE0M30.c0Kyapgbmrxify5PPgZUKhM7HPKNzTt6cfHoRdDP1T8";
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -47,6 +50,15 @@ const Products = () => {
     handleGet();
   }, []);
 
+  const filteredData = data.filter((product) => {
+    const meetsPriceCriteria = product.price <= price;
+    const meetsAvailabilityCriteria =
+      availability === "all" ||
+      (availability === "inStock" && product.inStock) ||
+      (availability === "outOfStock" && !product.inStock);
+    return meetsPriceCriteria && meetsAvailabilityCriteria;
+  });
+
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
@@ -59,9 +71,9 @@ const Products = () => {
     });
   };
 
-  const handleSliderChange = (event) => {
-    setPrice(event.target.value);
-  };
+  const handleSliderChange = (event) => setPrice(event.target.value);
+
+  const handleAvailabilityChange = (event) => setAvailability(event.target.id);
 
   const handleAddToCart = (product) => {
     dispatch({ type: "ADD_TO_CART", payload: product });
@@ -78,10 +90,10 @@ const Products = () => {
 
   const toggleWishlist = (product) => {
     if (wishlist.some((item) => item.id === product.id)) {
-      removeFromWishlist(product.id); 
+      removeFromWishlist(product.id);
       toast.info("Product removed from wishlist!");
     } else {
-      addToWishlist(product); 
+      addToWishlist(product);
       toast.success("Product added to wishlist!");
     }
   };
@@ -97,12 +109,77 @@ const Products = () => {
           {t("Home")} /{t("Products")}
         </h2>
       </div>
+
       <div className="products-section">
+        <form className="filter-form">
+          <div className="filter-section">
+            <h5>{t("Availability")}</h5>
+            <div className="form-check">
+              <input
+                type="radio"
+                id="all"
+                className="form-check-input"
+                checked={availability === "all"}
+                onChange={handleAvailabilityChange}
+              />
+              <label htmlFor="all">{t("All")}</label>
+            </div>
+            <div className="form-check">
+              <input
+                type="radio"
+                id="inStock"
+                className="form-check-input"
+                checked={availability === "inStock"}
+                onChange={handleAvailabilityChange}
+              />
+              <label htmlFor="inStock">{t("In stock")}</label>
+            </div>
+            <div className="form-check">
+              <input
+                type="radio"
+                id="outOfStock"
+                className="form-check-input"
+                checked={availability === "outOfStock"}
+                onChange={handleAvailabilityChange}
+              />
+              <label htmlFor="outOfStock">{t("Out of stock")}</label>
+            </div>
+          </div>
+
+          <div className="filter-section">
+            <h5>{t("Price")}</h5>
+            <input
+              type="range"
+              min="10"
+              max="300"
+              value={price}
+              onChange={handleSliderChange}
+            />
+            <p>
+              {t("Selected price")}: ${price}
+            </p>
+          </div>
+        </form>
+
         <div className="products-img">
+          <div className="sort-container">
+            <select name="sort" id="sort" className="sort-select">
+              <option value="a-z">{t("Sort by:")} A-Z</option>
+              <option value="z-a">{t("Sort by:")} Z-A</option>
+              <option value="pricelow">
+                {t("Price")} : {t("Low to High")}
+              </option>
+              <option value="pricehigh">
+                {t("Price")}: {t("High to Low")}
+              </option>
+            </select>
+          </div>
           <div className="container">
             <div className="row">
               {currentItems.map((product) => {
-                const isInWishlist = wishlist.some((item) => item.id === product.id);
+                const isInWishlist = wishlist.some(
+                  (item) => item.id === product.id
+                );
 
                 return (
                   <div className="col-sm-12 col-md-6 col-lg-4" key={product.id}>
@@ -183,4 +260,3 @@ const Products = () => {
 };
 
 export default Products;
-

@@ -58,7 +58,7 @@ const Bestseller = () => {
     const isInWishlist = wishlist.some((item) => item.id === el.id);
 
     if (isInWishlist) {
-      removeFromWishlist(el.id); // Wishlist-dən məhsulu sil
+      removeFromWishlist(el.id); 
       toast.info("Product removed from wishlist!", {
         position: "bottom-left",
         autoClose: 2000,
@@ -69,7 +69,7 @@ const Bestseller = () => {
         theme: "colored",
       });
     } else {
-      addToWishlist(el); // Wishlist-ə məhsulu əlavə et
+      addToWishlist(el); 
       toast.success("Product added to wishlist!", {
         position: "bottom-left",
         autoClose: 2000,

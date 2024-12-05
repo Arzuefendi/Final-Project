@@ -61,24 +61,13 @@ const Footer = () => {
                 {t("About us")}
               </Link>{" "}
             </p>
-            <p>
-              <Link to="/gallery" className="nav-link ">
-                {t("Gallery")}
-              </Link>{" "}
-            </p>
           </div>
           <div className="item3">
             <h5>
-              <Link to="/" className="dropdown-item">
-                {t("Customer Services")}
-              </Link>{" "}
-            </h5>
-
-            <p>
-              <Link to="/faq" className="nav-link ">
+            <Link to="/faq" className="nav-link ">
                 {t("FAQ")}
               </Link>{" "}
-            </p>
+            </h5>
             <p>
               <Link to="/blog" className="nav-link ">
                 {t("Blog")}
