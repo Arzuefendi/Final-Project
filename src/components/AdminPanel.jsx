@@ -56,59 +56,65 @@ const AdminPanel = () => {
   }, []);
 
   const saveBlog = async () => {
-    try {
-      if (editMode && selectedBlog && selectedBlog.id) {
-        await axios.patch(
-          `https://kgxgzybzrknpveetxbkq.supabase.co/rest/v1/blog?id=eq.${selectedBlog.id}`,
-          blogData,
-          {
-            headers: {
-              apikey: apiKey,
-              Authorization: `Bearer ${apiKey}`,
-              "Content-Type": "application/json",
-            },
-          }
-        );
+  try {
+    if (editMode && selectedBlog && selectedBlog.id) {
+      await axios.patch(
+        `https://kgxgzybzrknpveetxbkq.supabase.co/rest/v1/blog?id=eq.${selectedBlog.id}`,
+        blogData,
+        {
+          headers: {
+            apikey: apiKey,
+            Authorization: `Bearer ${apiKey}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
-        const updatedBlogs = blogs.map((blog) =>
-          blog.id === selectedBlog.id ? { ...blog, ...blogData } : blog
-        );
-        setBlogs(updatedBlogs);
-        toast.success("Blog uğurla yeniləndi");
-      } else {
-        const currentDate = new Date().toISOString();
-        const blogWithDate = { ...blogData, date: currentDate };
+      const updatedBlogs = blogs.map((blog) =>
+        blog.id === selectedBlog.id ? { ...blog, ...blogData } : blog
+      );
+      setBlogs(updatedBlogs);
+      toast.success("Blog uğurla yeniləndi");
+    } else {
+      const currentDate = new Date().toISOString();
+      const blogWithDate = { ...blogData, date: currentDate };
 
-        const response = await axios.post(
-          "https://kgxgzybzrknpveetxbkq.supabase.co/rest/v1/blog",
-          blogWithDate,
-          {
-            headers: {
-              apikey: apiKey,
-              Authorization: `Bearer ${apiKey}`,
-              "Content-Type": "application/json",
-            },
-          }
-        );
+      const response = await axios.post(
+        "https://kgxgzybzrknpveetxbkq.supabase.co/rest/v1/blog",
+        blogWithDate,
+        {
+          headers: {
+            apikey: apiKey,
+            Authorization: `Bearer ${apiKey}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.data && response.data.length > 0) {
         setBlogs([...blogs, response.data[0]]);
+      } else {
+        toast.success("Yeni blog əlavə edildi");
       }
-
-      handleClose();
-      setBlogData({
-        image: "",
-        title: "",
-        author: "",
-        description: "",
-        date: "",
-      });
-      setEditMode(false);
-      setSelectedBlog(null); // selectedBlog-u null edirik
-      fetchBlogs();
-    } catch (error) {
-      console.error("Blogu saxlarkən xəta baş verdi:", error);
-      toast.error("Blogu saxlarkən xəta baş verdi");
     }
-  };
+
+    handleClose();
+    setBlogData({
+      image: "",
+      title: "",
+      author: "",
+      description: "",
+      date: "",
+    });
+    setEditMode(false);
+    setSelectedBlog(null); 
+    fetchBlogs();
+  } catch (error) {
+    console.error("Blogu saxlarkən xəta baş verdi:", error);
+    toast.error("Blogu saxlarkən xəta baş verdi");
+  }
+};
+
 
   const handleDelete = async (id) => {
     if (!id) {
