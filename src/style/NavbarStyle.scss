@@ -109,7 +109,7 @@ nav {
 }
 
 .navbar-toggler-icon {
-  background-color: white !important; 
+  background-color: transparent !important; 
 }
 
 .navbar-nav {
@@ -127,17 +127,19 @@ nav {
 .navbar-collapse.show {
   display: block;
   transform: translateX(0); 
+  .icon{
+    justify-content: flex-start; 
+    margin-left: -3%;
+  }
 }
-
-// .navbar-toggler .navbar-collapse .icon {
-//   justify-content: flex-end; /* Align icons to the right inside the menu */
-// }
-
-// .navbar-toggler .navbar-collapse .navbar-nav {
-//   display: flex;
-//   flex-direction: column;
-//   align-items: flex-end; /* Align navbar items to the right */
-// }
+@media(max-width:1024px){
+.nav-head{
+  height: 6vh;
+}
+nav{
+  margin-top: 3% !important;
+}
+}
 
 @media(max-width:990px){
   nav{
@@ -147,12 +149,29 @@ nav {
     width: 13%;
   }
 }
-@media(max-width:860px){
+@media(max-width:912px){
   nav{
-    margin-top: 5%;
+    margin-top: 5% !important;
+  }
+  .nav-head{
+    height: 4vh !important;
+  }
+}
+@media(max-width:853px){
+  nav{
+    margin-top: 6% !important;
     margin-bottom: 3%;
   }
 }
+@media(max-width:780px){
+  nav{
+    margin-top: 6%;
+  }
+  .nav-head{
+    height: 5vh;
+  }
+}
+
 @media(max-width:650px){
   nav{
     margin-top: 6%;
@@ -163,13 +182,17 @@ nav {
 }
 @media(max-width:576px){
   .nav-head{
-    height: 7vh;
+    height: 6vh;
+   .dropdown{
+    width: 100%;
+   }
+    button{
+      margin-left: 5%;
+    }
   }
   .nav-head p{
-    
-      width: 50%;
-      margin-top: 3%;
-  }
+    display: none;
+}
   nav{
     margin-top: 8%;
   }
@@ -182,28 +205,34 @@ nav {
     padding: 0px;
   }
 }
+@media(max-width:540px){
+.nav-head{
+  height: 6vh !important;
+}
+  nav{
+    margin-top: 7% !important;
+  }
+}
 @media(max-width:475px){
   nav img{
-    width: 25%;
+    width: 30%;
   }
-  .nav-head p{
-    
-    width: 70%;
-    margin-top: 3%;
-}
-}
-@media(max-width:400px){
   nav{
-    margin-top: 12%;
+    margin-top: 13% !important;
   }
-  .nav-head{
-    height: 7vh;
+}
+@media(max-width:414px){
+  nav{
+    margin-top: 13% !important ;
   }
-  .nav-head p{
-    display: none;
 }
-.nav-head .dropdown{
-margin-left: 67%;
+@media(max-width:375px){
+  nav{
+    margin-top: 10% !important ;
+  }
 }
-  
+@media(max-width:344px){
+  nav{
+    margin-top: 15% !important ;
+  }
 }

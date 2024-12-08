@@ -13,6 +13,7 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const { t, i18n } = useTranslation();
+  const [isNavOpen, setIsNavOpen] = useState(false);
   const [showSignIn, setShowSignIn] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
   const [username, setUsername] = useState("");
@@ -23,6 +24,10 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
   const [cartCount, setCartCount] = useState(0);
   const { state } = useContext(CartContext);
   const { wishlistCount } = useContext(WishlistContext);
+
+  const handleNavToggle = () => {
+    setIsNavOpen(prev => !prev); 
+  };
 
   const handleSignInModalOpen = () => setShowSignIn(true);
   const handleSignInModalClose = () => {
@@ -54,6 +59,11 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
       setIsAuthenticated(false);
     }
   }, [setIsAuthenticated, location]);
+
+  useEffect(() => {
+    setIsNavOpen(false);  
+  }, [location]);
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -141,12 +151,12 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div
-            className="collapse navbar-collapse justify-content-end"
+           className={`collapse navbar-collapse justify-content-end ${isNavOpen ? "show" : ""}`}
             id="navbarSupportedContent"
           >
             <ul className="navbar-nav me-auto ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link to="/" className="nav-link">
+                <Link to="/" className="nav-link" onClick={handleNavToggle}>
                   {t("Home")}
                 </Link>
               </li>
@@ -155,24 +165,25 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
                   className="nav-link dropdown-toggle"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
+                  onClick={handleNavToggle}
                 >
                   {t("Pages")}
                 </Link>
                 <ul className="dropdown-menu">
                   <li>
-                    <Link to="/about" className="dropdown-item">
+                    <Link to="/about" className="dropdown-item" onClick={handleNavToggle}>
                       {t("About us")}
                     </Link>
                   </li>
                   <li>
-                    <Link to="/faq" className="dropdown-item">
+                    <Link to="/faq" className="dropdown-item" onClick={handleNavToggle}>
                       {t("FAQ")}
                     </Link>
                   </li>
                 </ul>
               </li>
               <li className="nav-item">
-                <Link to="/blog" className="nav-link">
+                <Link to="/blog" className="nav-link" onClick={handleNavToggle}>
                   {t("Blog")}
                 </Link>
               </li>
@@ -182,29 +193,30 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
                   className="nav-link dropdown-toggle"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
+                  onClick={handleNavToggle}
                 >
                   {t("Shop")}
                 </Link>
                 <ul className="dropdown-menu">
                   <li>
-                    <Link to="/products" className="dropdown-item">
+                    <Link to="/products" className="dropdown-item" onClick={handleNavToggle}>
                       {t("Products")}
                     </Link>
                   </li>
                   <li>
-                    <Link to="/cart" className="dropdown-item">
+                    <Link to="/cart" className="dropdown-item" onClick={handleNavToggle}>
                       {t("Cart")}
                     </Link>
                   </li>
                   <li>
-                    <Link to="/wishlist" className="dropdown-item">
+                    <Link to="/wishlist" className="dropdown-item" onClick={handleNavToggle}>
                       {t("Wishlist")}
                     </Link>
                   </li>
                 </ul>
               </li>
               <li className="nav-item">
-                <Link to="/contact" className="nav-link">
+                <Link to="/contact" className="nav-link" onClick={handleNavToggle}>
                   {t("Contact")}
                 </Link>
               </li>

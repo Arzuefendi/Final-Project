@@ -97,3 +97,8 @@
         transform: scale(0);
     }
 }
+@media(max-width:576px){
+    .img-fluid{
+        width: 80% !important;
+    }
+}

@@ -3,6 +3,7 @@ import "../style/checkout.css";
 import { useTranslation } from "react-i18next";
 import { ThemeContext } from "../ModeContext/Mode";
 import { useContext, useState } from "react";
+import Swal from "sweetalert2";
 
 const Checkout = () => {
   const { t } = useTranslation();
@@ -11,6 +12,7 @@ const Checkout = () => {
   const location = useLocation();
   const { total } = location.state || { total: 0 };
   const [validated, setValidated] = useState(false);
+  
 
   const handlePayment = (e) => {
     e.preventDefault(); 
@@ -18,7 +20,11 @@ const Checkout = () => {
 
     if (form.checkValidity() === false) {
       setValidated(true); 
-      alert(t("Please fill in all required fields!")); 
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "All fields are required!",
+      });
       return;
     }
 

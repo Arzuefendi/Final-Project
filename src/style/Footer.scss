@@ -55,21 +55,32 @@ footer {
 @media (max-width: 768px){
   .item1{
     img{
-      width: 70%;
+      width: 60%;
       margin-bottom: 3%;
     }
   }
 }
-@media (max-width: 476px) {
+@media (max-width: 576px) {
   .row {
     flex-direction: column;
-    align-items: center;
+    .item1{
+      img{
+        margin-top: 15%;
+        margin-left: 65% !important;
+        margin-bottom: 10%;
+      }
+    }
+    .icon{
+      margin-top: 5%;
+    }
+    .item1,
+    .item2,
+    .item3 {
+      flex: 1 1 100%;
+      margin: 10px 0;
+    }
   }
 
-  .item1,
-  .item2,
-  .item3 {
-    flex: 1 1 100%;
-    margin: 10px 0;
-  }
+
+ 
 }

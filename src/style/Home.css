@@ -85,16 +85,16 @@ html, body {
 
 @media (max-width: 576px) {
   .carousel-inner{
-    margin-top: 25%;
+    margin-top: 17%;
   }
   .main {
     margin-top: 15%;
   }
   .main .info-box {
-    height: 15vh;
+    height: 12vh;
   }
   .main .info-box img{
-    width: 15%;
+    width: 7%;
   }
   .main .info-box .col-md-3 {
     width: 100%;

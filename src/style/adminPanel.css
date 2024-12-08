@@ -2,3 +2,9 @@
     margin-top: 5%;
     margin-bottom: 5%;
 }
+.modal-body form{
+   border: none; 
+}
+.adminPanel button{
+    margin-bottom: 5px;
+}

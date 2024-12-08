@@ -79,10 +79,11 @@ main{
 }
 @media(max-width:768px){
     main{
-        height: 60vh;
+        height: 50vh;
+        text-align: center;
     }
     main img{
-        display: none;
+        margin-right: 10%;
     }
     h2{
         text-align: center;
@@ -94,6 +95,11 @@ main{
 @media(max-width:576px){
     main{
         height: 75vh;
+    } 
+    main{
+        img{
+            display: none;
+        }
     }
     main h2{
        margin-top: 0%;

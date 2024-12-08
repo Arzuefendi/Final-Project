@@ -98,4 +98,9 @@
   .category-box img:hover {
     transform: scale(0);
   }
+}
+@media (max-width: 576px) {
+  .img-fluid {
+    width: 80% !important;
+  }
 }/*# sourceMappingURL=Category.css.map */

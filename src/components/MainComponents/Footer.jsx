@@ -7,7 +7,7 @@ import { FaXTwitter } from "react-icons/fa6";
 import { VscSend } from "react-icons/vsc";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 const Footer = () => {
   const { t } = useTranslation();
 
@@ -16,22 +16,18 @@ const Footer = () => {
     const emailValue = emailInput.value.trim();
 
     if (emailValue === "") {
-      toast.error(t("Please enter a valid email address."), {
-        position: "bottom-left",
-        autoClose: 1000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: (t("Please enter a valid email address.")),
       });
     } else {
-      toast.success(t("Successfully sent!"), {
-        position: "bottom-left",
-        autoClose: 1000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: (t("Successfully sent")),
+        showConfirmButton: false,
+        timer: 1500,
       });
       emailInput.value = ""; 
     }

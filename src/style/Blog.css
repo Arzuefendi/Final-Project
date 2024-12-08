@@ -31,6 +31,7 @@ p {
 }
 .blog .card .card-body {
   height: 26vh;
+ 
 }
 @media(max-width:990px){
   .blog .container{
@@ -38,3 +39,42 @@ p {
     margin-bottom: 5%;
   }
 }
+@media(max-width:912px){
+  .blog .card .card-body {
+    height: 13vh;
+   
+  }
+}
+@media(max-width:855px){
+  .blog .card .card-body {
+    height: 15vh;
+   
+  }
+}
+@media(max-width:768px){
+  .blog .card .card-body {
+    height: 18vh;
+   
+  }
+}
+@media(max-width:540px){
+  .blog .card .card-body {
+    height: 24vh;
+   
+  }
+  }
+@media(max-width:414px){
+.blog .container{
+  margin-top: 30% !important;
+}
+.blog .card .card-body {
+  height: 20vh;
+ 
+}
+}
+@media(max-width:375px){
+  .blog .card .card-body {
+    height: 24vh;
+   
+  }
+  }

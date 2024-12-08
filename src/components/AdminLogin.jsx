@@ -46,7 +46,7 @@ const AdminLogin = () => {
     
     localStorage.setItem("isAdmin", "true");
     localStorage.setItem("username", "Admin");
-    navigate("/adminpanel");
+    localStorage.setItem("email", email)
     navigate("/adminpanel");
   };
   return (

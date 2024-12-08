@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../../style/Cotact.css";
 import { FaLocationDot } from "react-icons/fa6";
 import { MdPhoneInTalk } from "react-icons/md";
@@ -6,18 +6,51 @@ import { MdEmail } from "react-icons/md";
 import { TbClockHour4Filled } from "react-icons/tb";
 import { useTranslation } from "react-i18next";
 import { ThemeContext } from "../../ModeContext/Mode";
+import Swal from "sweetalert2";
+
 const Contact = () => {
   const { t } = useTranslation();
   const { isDarkMode } = useContext(ThemeContext);
+
+  const [name, setName] = useState("");
+  const [mobileNumber, setMobileNumber] = useState("");
+  const [email, setEmail] = useState("");
+  const [additionalInfo, setAdditionalInfo] = useState("");
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!name || !mobileNumber || !email || !additionalInfo) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: (t("All fields are required!")),
+      });
+      return;
+    }
+
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: (t("Successfully sent")),
+      showConfirmButton: false,
+      timer: 1500,
+    });
+  };
+
   return (
     <div className={`contact ${isDarkMode ? "dark-mode" : "light-mode"} `}>
       <div className="contact-header text-center mt-5">
-        <img src="	https://wpbingo-darion.myshopify.com/cdn/shop/files/bg-breadcrumb.jpg?v=1721207637" />
+        <img
+          src="https://wpbingo-darion.myshopify.com/cdn/shop/files/bg-breadcrumb.jpg?v=1721207637"
+          alt="breadcrumb"
+        />
         <h2>
-          {t("Home")} /{t("Contact")}{" "}
+          {t("Home")} / {t("Contact")}
         </h2>
       </div>
       <div className="container location">
@@ -32,7 +65,7 @@ const Contact = () => {
           </div>
           <div className="col-sm-12 col-md-6 col-lg-3">
             <MdPhoneInTalk />
-            <h4>{t("Phones")} </h4>
+            <h4>{t("Phones")}</h4>
             <p>0(800) 890-90-900</p>
             <p>0(800) 890-90-990</p>
           </div>
@@ -44,7 +77,7 @@ const Contact = () => {
           </div>
           <div className="col-sm-12 col-md-6 col-lg-3">
             <TbClockHour4Filled />
-            <h4>{t("Working Hours")} </h4>
+            <h4>{t("Working Hours")}</h4>
             <p>
               {t("Wednesday")} - {t("Sunday")}
             </p>
@@ -65,27 +98,46 @@ const Contact = () => {
 
       <div className="message">
         <h1>{t("Send Message")}</h1>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="container">
             <div className="row">
               <div className="col-sm-12 col-md-6 col-lg-6">
-                <input type="text" placeholder={t("Name")} />
+                <input
+                  type="text"
+                  placeholder={t("Name")}
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
               </div>
               <div className="col-sm-12 col-md-6 col-lg-6">
-                <input type="number" placeholder={t("Mobile Number")} />
+                <input
+                  type="number"
+                  placeholder={t("Mobile Number")}
+                  value={mobileNumber}
+                  onChange={(e) => setMobileNumber(e.target.value)}
+                />
               </div>
             </div>
             <div className="row">
               <div className="col-12">
-                <input type="email" placeholder="Mail ID" />
+                <input
+                  type="email"
+                  placeholder="Mail ID"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
               </div>
             </div>
             <div className="row">
               <div className="col-12">
-                <textarea placeholder={t("Additional Information")}></textarea>
+                <textarea
+                  placeholder={t("Additional Information")}
+                  value={additionalInfo}
+                  onChange={(e) => setAdditionalInfo(e.target.value)}
+                ></textarea>
               </div>
             </div>
-            <button onClick={() => alert("Göndərildi!")}>{t("Submit")} </button>
+            <button type="submit">{t("Submit")}</button>
           </div>
         </form>
       </div>
