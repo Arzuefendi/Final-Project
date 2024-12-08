@@ -30,13 +30,13 @@ const cartReducer = (state, action) => {
       if (existingItemIndex !== -1) {
         updatedCartItems = state.cartItems.map((item, index) =>
           index === existingItemIndex
-            ? { ...item, quantity: (item.quantity || 1) + 1 }
+            ? { ...item, quantity: item.quantity + action.payload.quantity }
             : item
         );
       } else {
         updatedCartItems = [
           ...state.cartItems,
-          { ...action.payload, quantity: 1 },
+          { ...action.payload, quantity: action.payload.quantity || 1 },
         ];
       }
 

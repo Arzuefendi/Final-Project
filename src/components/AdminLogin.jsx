@@ -43,6 +43,10 @@ const AdminLogin = () => {
       return;
     }
     setError("");
+    
+    localStorage.setItem("isAdmin", "true");
+    localStorage.setItem("username", "Admin");
+    navigate("/adminpanel");
     navigate("/adminpanel");
   };
   return (

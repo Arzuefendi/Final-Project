@@ -156,5 +156,17 @@
   "Expiration Date": "Expiration Date",
   "Expiration Date is required": "Expiration Date is required",
   "Security Code": "Security Code",
-  "Pay now": "Pay now"
+  "Pay now": "Pay now",
+   "Please fill in all required fields!": "Please fill in all required fields!",
+   "Please enter a valid email address.":"Please enter a valid email address.",
+   "Successfully sent":"Successfully sent",
+   "Product removed from wishlist!":"Product removed from wishlist!",
+   "Product added to wishlist!":"Product added to wishlist!",
+   "Highest Price":"Highest Price",
+   "Register":"Register",
+   "Sign up for our newsletter!":"Sign up for our newsletter!",
+   "Email address":"Email address",
+   "Your Wishlist Is Empty":"Your Wishlist Is Empty",
+   "Continue Shopping":"Continue Shopping",
+   "Your Cart Is Empty":"Your Cart Is Empty"
 }

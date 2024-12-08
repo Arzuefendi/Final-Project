@@ -5,12 +5,7 @@ import { CgProfile } from "react-icons/cg";
 import { FiShoppingCart } from "react-icons/fi";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { useTranslation } from "react-i18next";
-import { Dropdown } from "react-bootstrap";
-import ReactCountryFlag from "react-country-flag";
 import { Modal, Form, Button } from "react-bootstrap";
-import { ThemeContext } from "../../ModeContext/Mode";
-import { MdLightMode } from "react-icons/md";
-import { BsMoonStarsFill } from "react-icons/bs";
 import { CartContext } from "../AddToCartContext";
 import { WishlistContext } from "../WishlistContext";
 
@@ -18,11 +13,6 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const { t, i18n } = useTranslation();
-  const changeLanguage = (lang) => {
-    i18n.changeLanguage(lang);
-  };
-  const currentLanguage = i18n.language;
-  const { isDarkMode, toggleTheme } = useContext(ThemeContext);
   const [showSignIn, setShowSignIn] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
   const [username, setUsername] = useState("");
@@ -115,70 +105,29 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
     }
   };
 
-  const addToCart = () => {
-    setCartCount((prevCount) => prevCount + 1);
-  };
+  useEffect(() => {
+    const authStatus = localStorage.getItem("isAuthenticated");
+    const storedUsername = localStorage.getItem("username");
+    const isAdmin = localStorage.getItem("isAdmin");
+
+    if (authStatus === "true") {
+      setIsAuthenticated(true);
+      setUsername(storedUsername);
+    } else if (isAdmin === "true") {
+      setIsAuthenticated(true);
+      setUsername("Admin");
+    } else {
+      setIsAuthenticated(false);
+    }
+  }, [setIsAuthenticated, location]);
   return (
     <div>
-      <div className="nav-head  d-flex justify-content-between fixed-top align-items-center mx-3 my-2">
-        <p>{t("Quick sale: 20% off products purchased today")}</p>
-        <Dropdown>
-          <Dropdown.Toggle
-            className="custom-dropdown-toggle"
-            id="dropdown-basic"
-          >
-            <ReactCountryFlag
-              countryCode={
-                currentLanguage === "az"
-                  ? "AZ"
-                  : currentLanguage === "ru"
-                  ? "RU"
-                  : "GB"
-              }
-              svg
-              style={{ marginRight: "10px" }}
-            />
-            {currentLanguage === "az"
-              ? "Az"
-              : currentLanguage === "ru"
-              ? "Rus"
-              : "En"}
-          </Dropdown.Toggle>
-
-          <Dropdown.Menu className="custom-dropdown-menu text-end">
-            {["az", "ru", "en"].map(
-              (lang) =>
-                currentLanguage !== lang && (
-                  <Dropdown.Item
-                    onClick={() => changeLanguage(lang)}
-                    key={lang}
-                  >
-                    <ReactCountryFlag
-                      countryCode={
-                        lang === "az" ? "AZ" : lang === "ru" ? "RU" : "GB"
-                      }
-                      svg
-                      style={{ marginRight: "10px" }}
-                    />
-                    {lang === "az" ? "Az" : lang === "ru" ? "Rus" : "En"}
-                  </Dropdown.Item>
-                )
-            )}
-          </Dropdown.Menu>
-          <button
-            variant="outline-light"
-            className="fs-5 icons"
-            onClick={toggleTheme}
-          >
-            {isDarkMode ? <BsMoonStarsFill /> : <MdLightMode />}
-          </button>
-        </Dropdown>
-      </div>
       <nav className="navbar navbar-expand-lg fixed-top">
         <div className="container-fluid ms-5">
           <img
             src="https://wpbingo-darion.myshopify.com/cdn/shop/files/logo.png?crop=center&height=88&v=1720775788&width=400"
             width="8%"
+            alt="Logo"
           />
           <button
             className="navbar-toggler"
@@ -191,7 +140,10 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <div
+            className="collapse navbar-collapse justify-content-end"
+            id="navbarSupportedContent"
+          >
             <ul className="navbar-nav me-auto ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <Link to="/" className="nav-link">
@@ -257,7 +209,7 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
                 </Link>
               </li>
             </ul>
-            <div className="icon d-flex align-items-center justify-content-end">
+            <div className="icon d-flex align-items-center">
               <div className="heart-icon position-relative mx-3">
                 <IoMdHeartEmpty
                   onClick={() => navigate("/wishlist")}
@@ -284,16 +236,14 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
 
               <div className="profile-icon">
                 {isAuthenticated ? (
-                  username && (
-                    <button
-                      variant="outline-light"
-                      className="profile-button d-flex align-items-center"
-                      onClick={() => setShowProfile(true)}
-                    >
-                      <CgProfile className="m-2" />
-                      {username}
-                    </button>
-                  )
+                  <button
+                    variant="outline-light"
+                    className="profile-button d-flex align-items-center"
+                    onClick={() => setShowProfile(true)}
+                  >
+                    <CgProfile className="m-2" />
+                    {username}
+                  </button>
                 ) : (
                   <CgProfile
                     className="m-2 icon-size cursor-pointer"
@@ -398,4 +348,4 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
   );
 };
 
-export default Navbar; 
+export default Navbar;

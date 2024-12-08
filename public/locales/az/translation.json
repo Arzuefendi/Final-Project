@@ -155,5 +155,17 @@
   "Expiration Date": "Son istifadə tarixi",
   "Expiration Date is required": "Son istifadə tarixi mütləqdir",
   "Security Code": "Təhlükəsizlik kodu",
-  "Pay now": "İndi ödə"
+  "Pay now": "İndi ödə",
+  "Please fill in all required fields!":"Zəhmət olmasa, məlumatların hamısını doldurun",
+  "Please enter a valid email address.":"Etibarlı e-poçt ünvanı daxil edin.",
+  "Successfully sent":"Uğurla göndərildi",
+  "Successfully added to cart!":"Səbətə uğurla əlavə edildi!",
+  "Product removed from wishlist!":"Məhsul istək siyahısından silindi!",
+  "Product added to wishlist!":"Məhsul istək siyahısına əlavə edildi!",
+  "Highest Price":"Ən yüksək qiymət",
+  "Register":"Qeydiyyat",
+  "Sign up for our newsletter!":"Bülletenimiz üçün qeydiyyatdan keçin!",
+  "Your Wishlist Is Empty":"İstək Siyahınız Boşdur",
+  "Continue Shopping":"Alış-verişə davam edin",
+  "Your Cart Is Empty":"Səbətiniz Boşdur"
 }

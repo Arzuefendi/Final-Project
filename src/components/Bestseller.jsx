@@ -43,7 +43,7 @@ const Bestseller = () => {
 
   const handleAddToCart = (el) => {
     dispatch({ type: "ADD_TO_CART", payload: el });
-    toast.success("Successfully added to cart!", {
+    toast.success(t("Successfully added to cart!"), {
       position: "bottom-left",
       autoClose: 2000,
       hideProgressBar: false,

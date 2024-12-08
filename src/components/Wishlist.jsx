@@ -39,7 +39,9 @@ const Wishlist = () => {
       </div>
       <div className="wishlist-items">
   {wishlist && wishlist.length === 0 ? (  
-    <div className="last">
+    <div className="last"  style={{
+      height: "15vh"
+    }}>
       <h3>{t("Your Wishlist Is Empty")}</h3>
       <button>{t("Continue Shopping")}</button>
     </div>

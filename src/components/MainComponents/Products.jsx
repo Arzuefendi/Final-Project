@@ -20,8 +20,11 @@ const Products = () => {
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 9;
-  const [price, setPrice] = useState(10);
-  const [availability, setAvailability] = useState("all");
+  const [price, setPrice] = useState([0, 300]);
+  const [filter, setFilter] = useState({ inStock: false, outOfStock: false });
+  const [filteredData, setFilteredData] = useState([]);
+  const [sortOrder, setSortOrder] = useState("A-Z");
+
   const apiKey =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtneGd6eWJ6cmtucHZlZXR4YmtxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjg1NzUxNDMsImV4cCI6MjA0NDE1MTE0M30.c0Kyapgbmrxify5PPgZUKhM7HPKNzTt6cfHoRdDP1T8";
 
@@ -41,27 +44,15 @@ const Products = () => {
             },
           }
         );
+        console.log(response.data); // Gələn məlumatları yoxlayın
         setData(response.data);
       } catch (error) {
-        console.error(error);
+        console.error("Error fetching data:", error);
       }
     };
 
     handleGet();
   }, []);
-
-  const filteredData = data.filter((product) => {
-    const meetsPriceCriteria = product.price <= price;
-    const meetsAvailabilityCriteria =
-      availability === "all" ||
-      (availability === "inStock" && product.inStock) ||
-      (availability === "outOfStock" && !product.inStock);
-    return meetsPriceCriteria && meetsAvailabilityCriteria;
-  });
-
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -71,13 +62,69 @@ const Products = () => {
     });
   };
 
-  const handleSliderChange = (event) => setPrice(event.target.value);
+  useEffect(() => {
+    if (!data.length) return;
 
-  const handleAvailabilityChange = (event) => setAvailability(event.target.id);
+    const filtered = data.filter((item) => {
+      const itemPrice = parseFloat(item.price?.replace(/[^0-9.]/g, "")) || 0;
+
+      const withinPriceRange = itemPrice >= price[0] && itemPrice <= price[1];
+
+      const isInStock = filter.inStock && item.stock_status === "in stock";
+      const isOutOfStock =
+        filter.outOfStock && item.stock_status === "out of stock";
+
+      const noStockFilter = !filter.inStock && !filter.outOfStock;
+
+      return withinPriceRange && (isInStock || isOutOfStock || noStockFilter);
+    });
+
+    switch (sortOrder) {
+      case "a-z":
+        filtered.sort((a, b) => {
+          const nameA = (a.name2 || "").trim().toLowerCase();
+          const nameB = (b.name2 || "").trim().toLowerCase();
+          return nameA.localeCompare(nameB); // Ascending A-Z
+        });
+        break;
+      case "z-a":
+        filtered.sort((a, b) => {
+          const nameA = (a.name2 || "").trim().toLowerCase();
+          const nameB = (b.name2 || "").trim().toLowerCase();
+          return nameB.localeCompare(nameA); // Descending Z-A
+        });
+        break;
+      case "pricelow":
+        filtered.sort((a, b) => {
+          const priceA = parseFloat(a.price?.replace(/[^0-9.]/g, "")) || 0;
+          const priceB = parseFloat(b.price?.replace(/[^0-9.]/g, "")) || 0;
+          return priceA - priceB;
+        });
+        break;
+      case "pricehigh":
+        filtered.sort((a, b) => {
+          const priceA = parseFloat(a.price?.replace(/[^0-9.]/g, "")) || 0;
+          const priceB = parseFloat(b.price?.replace(/[^0-9.]/g, "")) || 0;
+          return priceB - priceA;
+        });
+        break;
+      default:
+        break;
+    }
+
+    setFilteredData(filtered);
+  }, [data, filter, price, sortOrder]);
+
+  const indexOfFirstItem = (currentPage - 1) * itemsPerPage;
+  const indexOfLastItem = indexOfFirstItem + itemsPerPage;
+  const currentItems =
+    filteredData.length > 0
+      ? filteredData.slice(indexOfFirstItem, indexOfLastItem)
+      : [];
 
   const handleAddToCart = (product) => {
     dispatch({ type: "ADD_TO_CART", payload: product });
-    toast.success("Successfully added to cart!", {
+    toast.success(t("Successfully added to cart!"), {
       position: "bottom-left",
       autoClose: 2000,
       hideProgressBar: false,
@@ -91,11 +138,28 @@ const Products = () => {
   const toggleWishlist = (product) => {
     if (wishlist.some((item) => item.id === product.id)) {
       removeFromWishlist(product.id);
-      toast.info("Product removed from wishlist!");
+      toast.info(t("Product removed from wishlist!"));
     } else {
       addToWishlist(product);
-      toast.success("Product added to wishlist!");
+      toast.success(t("Product added to wishlist!"));
     }
+  };
+
+  const handleFilterChange = (e) => {
+    const { id } = e.target;
+    setFilter({
+      inStock: id === "inStock" ? true : false,
+      outOfStock: id === "outOfStock" ? true : false,
+    });
+  };
+
+  const handlePriceChange = (e) => {
+    const value = Number(e.target.value);
+    setPrice([price[0], value]);
+  };
+
+  const handleSortChange = (e) => {
+    setSortOrder(e.target.value);
   };
 
   return (
@@ -111,61 +175,62 @@ const Products = () => {
       </div>
 
       <div className="products-section">
-        <form className="filter-form">
+        <form className="filter-form mt-5">
           <div className="filter-section">
-            <h5>{t("Availability")}</h5>
-            <div className="form-check">
+            <h2>{t("Availability")}</h2>
+            <div className="form-check" style={{ marginBottom: "10px" }}>
               <input
-                type="radio"
-                id="all"
-                className="form-check-input"
-                checked={availability === "all"}
-                onChange={handleAvailabilityChange}
-              />
-              <label htmlFor="all">{t("All")}</label>
-            </div>
-            <div className="form-check">
-              <input
-                type="radio"
+                type="checkbox"
                 id="inStock"
                 className="form-check-input"
-                checked={availability === "inStock"}
-                onChange={handleAvailabilityChange}
+                checked={filter.inStock}
+                onChange={handleFilterChange}
               />
               <label htmlFor="inStock">{t("In stock")}</label>
             </div>
             <div className="form-check">
               <input
-                type="radio"
+                type="checkbox"
                 id="outOfStock"
                 className="form-check-input"
-                checked={availability === "outOfStock"}
-                onChange={handleAvailabilityChange}
+                checked={filter.outOfStock}
+                onChange={handleFilterChange}
               />
               <label htmlFor="outOfStock">{t("Out of stock")}</label>
             </div>
           </div>
 
           <div className="filter-section">
-            <h5>{t("Price")}</h5>
+            <h2>{t("Price")}</h2>
+            <p>
+              {t("Highest Price")} $ {price[1].toLocaleString("en-US")}
+            </p>
             <input
               type="range"
+              className="slider"
               min="10"
               max="300"
-              value={price}
-              onChange={handleSliderChange}
+              value={price[1]}
+              onChange={handlePriceChange}
+              style={{ width: "100%", accentColor: "red" }}
             />
-            <p>
-              {t("Selected price")}: ${price}
-            </p>
+            <div className="d-flex justify-content-between">
+              <span> {t("Price")}: $ {price[0].toLocaleString("en-US")}</span>
+              <span>$ {price[1].toLocaleString("en-US")}</span>
+            </div>
           </div>
         </form>
 
         <div className="products-img">
           <div className="sort-container">
-            <select name="sort" id="sort" className="sort-select">
+            <select
+              name="sort"
+              id="sort"
+              className="sort-select"
+              onChange={handleSortChange}
+              defaultValue="a-z"
+            >
               <option value="a-z">{t("Sort by:")} A-Z</option>
-              <option value="z-a">{t("Sort by:")} Z-A</option>
               <option value="pricelow">
                 {t("Price")} : {t("Low to High")}
               </option>

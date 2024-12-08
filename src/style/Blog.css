@@ -16,7 +16,8 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 .blog .container {
-  height: 210vh;
+  height: auto;
+  margin-bottom: 6%;
 }
 .blog .card span:nth-child(2) {
   color: rgb(103, 103, 103);

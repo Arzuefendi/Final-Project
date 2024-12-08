@@ -26,6 +26,7 @@ import Recommended from "./components/Recommended.jsx";
 import Checkout from "./components/Checkout.jsx";
 import { CartProvider } from "./components/AddToCartContext.jsx";
 import { WishlistProvider } from "./components/WishlistContext.jsx";
+import Header from "./components/Header.jsx";
 
 
 function App() {
@@ -35,12 +36,12 @@ function App() {
      <CartProvider>
       <WishlistProvider>
       <ThemeProvider>
+      <Header/>
         <Navbar
           isAuthenticated={isAuthenticated}
           setIsAuthenticated={setIsAuthenticated}
         />
         <ToastContainer position="bottom-left" autoClose={1500} hideProgressBar={false} newestOnTop={false} closeOnClick pauseOnFocusLoss draggable pauseOnHover />
-        
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/products" element={<Products/>} />

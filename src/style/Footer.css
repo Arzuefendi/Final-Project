@@ -1,45 +1,36 @@
 footer {
   background-color: #f5f5f5;
-  height: 50vh;
+  height: auto;
   margin-top: -6%;
-}
-footer input {
-  width: 75%;
-  margin-top: 5%;
-  margin-bottom: 5%;
-  height: 7vh;
-  margin-left: 2%;
-  border-radius: 25px;
-  border: 1px solid black;
-}
-footer input::-moz-placeholder {
-  padding-left: 20px;
-}
-footer input::placeholder {
-  padding-left: 20px;
-}
-footer button {
-  transform: translateX(-110%);
-  background-color: black;
-  color: white;
-  border: none;
-  border-radius: 25px;
-  height: 4vh;
-  width: 20%;
+  overflow-y: hidden;
 }
 footer .item1 {
-  margin-top: 7%;
+  margin-top: 5%;
   max-width: 50%;
   flex: 0 0 50%;
   margin-bottom: 3%;
 }
+footer .item1 input {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  background-color: transparent;
+  margin: 3%;
+}
+footer .item1 input:focus {
+  border-color: #ccc;
+  outline: none;
+  box-shadow: none;
+}
+footer .item1 h5 {
+  margin-top: 3%;
+}
 footer .item2 {
-  margin-top: 7%;
+  margin-top: 5%;
   max-width: 25%;
   flex: 0 0 25%;
 }
 footer .item3 {
-  margin-top: 7%;
+  margin-top: 5%;
   max-width: 25%;
   flex: 0 0 25%;
 }
@@ -60,70 +51,21 @@ footer h5 {
   margin-left: 3%;
 }
 
-@media (max-width: 1125px) {
-  footer {
-    height: 45vh;
-  }
-}
-@media (max-width: 1024px) {
-  footer {
-    height: auto;
-  }
-}
-@media (max-width: 992px) {
-  footer {
-    height: auto;
-  }
-  footer .item1 {
-    margin-left: -10%;
-    margin-right: 5%;
-  }
-  footer .item2 {
-    margin-right: 5%;
-  }
-  footer input {
-    width: 78%;
-  }
-}
-@media (max-width: 922px) {
-  footer {
-    height: auto;
-  }
-}
-@media (max-width: 836px) {
-  footer .item1 {
-    margin-left: -5%;
-    margin-right: 1%;
-  }
-  footer .item2 {
-    margin-right: 1%;
-  }
-}
 @media (max-width: 768px) {
-  footer {
-    height: auto;
-  }
-  footer .container .row {
-    display: flex;
-    flex-direction: column;
-  }
-  footer input {
-    width: 150%;
-  }
-  footer button {
-    transform: translate(190%, -178%);
-    width: 50%;
+  .item1 img {
+    width: 70%;
+    margin-bottom: 3%;
   }
 }
-@media (max-width: 450px) {
-  footer {
-    height: auto;
+@media (max-width: 476px) {
+  .row {
+    flex-direction: column;
+    align-items: center;
   }
-  footer h5 {
-    width: 110%;
-  }
-  footer button {
-    transform: translate(190%, -170%);
-    width: 50%;
+  .item1,
+  .item2,
+  .item3 {
+    flex: 1 1 100%;
+    margin: 10px 0;
   }
 }/*# sourceMappingURL=Footer.css.map */

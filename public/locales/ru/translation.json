@@ -154,5 +154,17 @@
   "Expiration Date": "Дата истечения срока",
   "Expiration Date is required": "Дата истечения срока обязательна",
   "Security Code": "Код безопасности",
-  "Pay now": "Оплатить сейчас"
-}
+  "Pay now": "Оплатить сейчас",
+   "Please fill in all required fields!":"Пожалуйста, заполните все обязательные поля!",
+   "Please enter a valid email address.":"Пожалуйста, введите действительный адрес электронной почты.",
+   "Successfully sent":"Успешно отправлено",
+   "Successfully added to cart!":"Успешно добавлено в корзину!",
+   "Product removed from wishlist!":"Товар удален из списка желаний!",
+   "Product added to wishlist!":"Товар добавлен в список желаний!",
+   "Highest Price":"Самая высокая цена",
+   "Register":"Зарегистрироваться",
+   "Sign up for our newsletter!":"Подпишитесь на нашу рассылку!",
+   "Your Wishlist Is Empty":"Ваш список желаний пуст",
+   "Continue Shopping":"Продолжить покупки",
+   "Your Cart Is Empty":"Ваша корзина пуста"
+  }

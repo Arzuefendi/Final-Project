@@ -61,9 +61,13 @@ const ProductDetails = () => {
     navigate("/checkout");
   };
   const handleAddToCart = () => {
-    dispatch({ type: "ADD_TO_CART", payload: product });
-    toast.success(`Successfully added to cart!`);
+    dispatch({ 
+      type: "ADD_TO_CART", 
+      payload: { ...product, quantity: count }
+    });
+    toast.success(`Successfully added ${count} item(s) to cart!`);
   };
+  
   const isInWishlist = wishlist.some((item) => item.id === product.id);
   
   const toggleWishlist = (product) => {

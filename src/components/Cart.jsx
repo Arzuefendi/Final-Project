@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ThemeContext } from "../ModeContext/Mode";
 import { CartContext } from "./AddToCartContext";
@@ -31,10 +31,20 @@ const Cart = () => {
     e.preventDefault();
     if (promoCode.trim().toLowerCase() === "discount20") {
       setDiscount(0.2);
+      localStorage.setItem("promoCode", "discount20"); 
     } else {
       setDiscount(0);
+      localStorage.removeItem("promoCode"); 
     }
   };
+  
+  useEffect(() => {
+    const savedPromoCode = localStorage.getItem("promoCode");
+    if (savedPromoCode === "discount20") {
+      setDiscount(0.2);
+    }
+  }, []);
+  
 
   const handleButtonClick = () => {
     navigate("/products");

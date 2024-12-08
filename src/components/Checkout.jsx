@@ -2,16 +2,26 @@ import { useLocation, useNavigate } from "react-router-dom";
 import "../style/checkout.css";
 import { useTranslation } from "react-i18next";
 import { ThemeContext } from "../ModeContext/Mode";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+
 const Checkout = () => {
   const { t } = useTranslation();
   const { isDarkMode } = useContext(ThemeContext);
   const navigate = useNavigate();
   const location = useLocation();
   const { total } = location.state || { total: 0 };
+  const [validated, setValidated] = useState(false);
 
   const handlePayment = (e) => {
-    e.preventDefault();
+    e.preventDefault(); 
+    const form = e.target;
+
+    if (form.checkValidity() === false) {
+      setValidated(true); 
+      alert(t("Please fill in all required fields!")); 
+      return;
+    }
+
     navigate("/recommended");
   };
 
@@ -20,17 +30,22 @@ const Checkout = () => {
       <div className="container">
         <div className="row">
           <div className="col-md-12 order-md-1">
-            <form className="needs-validation" noValidate>
+            <form
+              className="needs-validation"
+              noValidate
+              onSubmit={handlePayment}
+              validated={validated.toString()} // Səhv mesajlarını göstərmək üçün `validated` state-ni göndəririk
+            >
               <div className="row">
                 <h3>{t("Contact")}</h3>
                 <div className="col-md-12 mb-3">
-                  <label htmlFor="firstName">
+                  <label htmlFor="emailPhone">
                     {t("Email or Phone Number")}
                   </label>
                   <input
                     type="text"
                     className="form-control"
-                    id="firstName"
+                    id="emailPhone"
                     required
                   />
                   <div className="invalid-feedback">
@@ -40,9 +55,9 @@ const Checkout = () => {
               </div>
 
               <div className="row">
-                <h3>{t("Delivery")} </h3>
+                <h3>{t("Delivery")}</h3>
                 <div className="col-md-6 mb-3">
-                  <label htmlFor="firstName">{t("First Name")} </label>
+                  <label htmlFor="firstName">{t("First Name")}</label>
                   <input
                     type="text"
                     className="form-control"
@@ -54,15 +69,15 @@ const Checkout = () => {
                   </div>
                 </div>
                 <div className="col-md-6 mb-3">
-                  <label htmlFor="firstName">{t("Last name")}</label>
+                  <label htmlFor="lastName">{t("Last Name")}</label>
                   <input
                     type="text"
                     className="form-control"
-                    id="firstName"
+                    id="lastName"
                     required
                   />
                   <div className="invalid-feedback">
-                    {t(" The last Name is required.")}
+                    {t("The last name is required.")}
                   </div>
                 </div>
                 <div className="col-md-6 mb-3">
@@ -73,7 +88,7 @@ const Checkout = () => {
                     required
                   >
                     <option value="">{t("Choose...")}</option>
-                    <option>{t("United States")} </option>
+                    <option>{t("United States")}</option>
                     <option>{t("Azerbaijan")}</option>
                     <option>{t("Russia")}</option>
                   </select>
@@ -147,11 +162,11 @@ const Checkout = () => {
               </div>
               <div className="row">
                 <div className="col-md-6 mb-3">
-                  <label htmlFor="cc-number">{t("Expiration Date")}</label>
+                  <label htmlFor="cc-expiry">{t("Expiration Date")}</label>
                   <input
                     type="text"
                     className="form-control"
-                    id="cc-number"
+                    id="cc-expiry"
                     placeholder=""
                     required
                   />
@@ -160,11 +175,11 @@ const Checkout = () => {
                   </div>
                 </div>
                 <div className="col-md-6 mb-3">
-                  <label htmlFor="cc-number">{t("Security Code")}</label>
+                  <label htmlFor="cc-cvc">{t("Security Code")}</label>
                   <input
                     type="text"
                     className="form-control"
-                    id="cc-number"
+                    id="cc-cvc"
                     placeholder=""
                     required
                   />
@@ -177,7 +192,6 @@ const Checkout = () => {
               <button
                 className="btn btn-danger btn-lg btn-block"
                 type="submit"
-                onClick={handlePayment}
               >
                 {t("Pay now")}
               </button>

@@ -74,7 +74,11 @@ const AdminPanel = () => {
         blog.id === selectedBlog.id ? { ...blog, ...blogData } : blog
       );
       setBlogs(updatedBlogs);
+<<<<<<< HEAD
       toast.success("Blog uğurla yeniləndi");
+=======
+      toast.success("Blog updated successfully");
+>>>>>>> 10b8272 (sort and filter added)
     } else {
       const currentDate = new Date().toISOString();
       const blogWithDate = { ...blogData, date: currentDate };
@@ -94,7 +98,11 @@ const AdminPanel = () => {
       if (response.data && response.data.length > 0) {
         setBlogs([...blogs, response.data[0]]);
       } else {
+<<<<<<< HEAD
         toast.success("Yeni blog əlavə edildi");
+=======
+        toast.success("New blog added");
+>>>>>>> 10b8272 (sort and filter added)
       }
     }
 
@@ -110,8 +118,13 @@ const AdminPanel = () => {
     setSelectedBlog(null); 
     fetchBlogs();
   } catch (error) {
+<<<<<<< HEAD
     console.error("Blogu saxlarkən xəta baş verdi:", error);
     toast.error("Blogu saxlarkən xəta baş verdi");
+=======
+    console.error("An error occurred while saving the blog:", error);
+    toast.error("An error occurred while saving the blog");
+>>>>>>> 10b8272 (sort and filter added)
   }
 };
 
