@@ -13,6 +13,7 @@
     transform: translateY(-400%);
     position: relative; 
     z-index: 1; 
+    font-weight: 600;
    
 }
 .contact{
@@ -128,8 +129,29 @@ form {
       width: 50%;
       height: 5vh;
     }
+    .contact-header h2 {
+      transform: translateY(-600%);
+      position: relative; 
+      z-index: 1; 
+     
   }
-  
+  }
+  @media(max-width:912px){
+    .contact-header h2 {
+      transform: translateY(-900%);
+      position: relative; 
+      z-index: 1; 
+     
+  }
+  }
+  @media(max-width:853px){
+    .contact-header h2 {
+      transform: translateY(-700%);
+      position: relative; 
+      z-index: 1; 
+     
+  }
+  }
   @media(max-width:576px){
     .contact form button{
       width: 50%;
@@ -141,6 +163,12 @@ form {
     .contact .message{
       height: 76vh;
     }
+    .contact-header h2 {
+      transform: translateY(-600%);
+      position: relative; 
+      z-index: 1; 
+     
+  }
   }
   @media(max-width:500px){
     .contact-header{
@@ -158,4 +186,20 @@ form {
         width: 60% !important;
       }
     }
+  }
+  @media(max-width:430px){
+    .contact-header h2 {
+      transform: translateY(-300%);
+      position: relative; 
+      z-index: 1; 
+     
+  }
+  }
+  @media(max-width:344px){
+    .contact-header h2 {
+      transform: translateY(-400%);
+      position: relative; 
+      z-index: 1; 
+     
+  }
   }

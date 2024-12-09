@@ -141,9 +141,9 @@ nav{
 }
 }
 
-@media(max-width:990px){
+@media(max-width:992px){
   nav{
-    margin-top: 4%;
+    margin-top: 4% !important;
   }
   nav img{
     width: 13%;
@@ -169,6 +169,11 @@ nav{
   }
   .nav-head{
     height: 5vh;
+  }
+}
+@media(max-width:768px){
+  nav{
+    margin-top: 5% !important;
   }
 }
 

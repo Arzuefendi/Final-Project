@@ -44,7 +44,7 @@ const Products = () => {
             },
           }
         );
-        console.log(response.data); // Gələn məlumatları yoxlayın
+        console.log(response.data);
         setData(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -84,14 +84,14 @@ const Products = () => {
         filtered.sort((a, b) => {
           const nameA = (a.name2 || "").trim().toLowerCase();
           const nameB = (b.name2 || "").trim().toLowerCase();
-          return nameA.localeCompare(nameB); // Ascending A-Z
+          return nameA.localeCompare(nameB);
         });
         break;
       case "z-a":
         filtered.sort((a, b) => {
           const nameA = (a.name2 || "").trim().toLowerCase();
           const nameB = (b.name2 || "").trim().toLowerCase();
-          return nameB.localeCompare(nameA); // Descending Z-A
+          return nameB.localeCompare(nameA);
         });
         break;
       case "pricelow":
@@ -215,7 +215,10 @@ const Products = () => {
               style={{ width: "100%", accentColor: "red" }}
             />
             <div className="d-flex justify-content-between">
-              <span> {t("Price")}: $ {price[0].toLocaleString("en-US")}</span>
+              <span>
+                {" "}
+                {t("Price")}: $ {price[0].toLocaleString("en-US")}
+              </span>
               <span>$ {price[1].toLocaleString("en-US")}</span>
             </div>
           </div>

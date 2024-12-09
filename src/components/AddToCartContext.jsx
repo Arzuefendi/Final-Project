@@ -25,21 +25,29 @@ const cartReducer = (state, action) => {
       const existingItemIndex = state.cartItems.findIndex(
         (item) => item.id === action.payload.id
       );
-
+    
       let updatedCartItems;
       if (existingItemIndex !== -1) {
         updatedCartItems = state.cartItems.map((item, index) =>
           index === existingItemIndex
-            ? { ...item, quantity: item.quantity + action.payload.quantity }
+            ? { 
+                ...item, 
+                quantity: (item.quantity || 1) + (action.payload.quantity || 1),
+                price: item.price || action.payload.price, // Ensure price is carried forward
+              }
             : item
         );
       } else {
         updatedCartItems = [
           ...state.cartItems,
-          { ...action.payload, quantity: action.payload.quantity || 1 },
+          { 
+            ...action.payload, 
+            quantity: action.payload.quantity || 1, // Default to 1 if undefined
+            price: action.payload.price || 0, // Default to 0 if undefined
+          },
         ];
       }
-
+    
       updatedState = {
         ...state,
         cartItems: updatedCartItems,
@@ -47,6 +55,7 @@ const cartReducer = (state, action) => {
       };
       break;
     }
+    
 
     case "REMOVE_FROM_CART": {
       const itemToRemove = state.cartItems.find(

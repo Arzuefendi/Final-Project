@@ -26,7 +26,7 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
   const { wishlistCount } = useContext(WishlistContext);
 
   const handleNavToggle = () => {
-    setIsNavOpen(prev => !prev); 
+    setIsNavOpen((prev) => !prev);
   };
 
   const handleSignInModalOpen = () => setShowSignIn(true);
@@ -35,35 +35,31 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
     setErrors({ email: "", password: "" });
     setLoginError("");
   };
-  const handleLogout = () => {
-    setIsAuthenticated(false);
-    localStorage.setItem("isAuthenticated", "false");
-    localStorage.removeItem("username");
-    localStorage.removeItem("email");
-    setShowProfile(false);
-    setUsername("");
-    setEmail("");
-  };
+
 
   useEffect(() => {
     const authStatus = localStorage.getItem("isAuthenticated");
     const storedUsername = localStorage.getItem("username");
     const storedEmail = localStorage.getItem("email");
-    if (authStatus === "true") {
+    const isAdmin = localStorage.getItem("isAdmin");
+  
+    if (isAdmin === "true") {
       setIsAuthenticated(true);
-      if (storedUsername && storedEmail) {
-        setUsername(storedUsername);
-        setEmail(storedEmail);
-      }
+      setUsername("Admin");
+      setEmail("arzuefendi@gmail.com");
+    } else if (authStatus === "true") {
+      setIsAuthenticated(true);
+      setUsername(storedUsername);
+      setEmail(storedEmail);
     } else {
       setIsAuthenticated(false);
     }
   }, [setIsAuthenticated, location]);
+  
 
   useEffect(() => {
-    setIsNavOpen(false);  
+    setIsNavOpen(false);
   }, [location]);
-
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -71,13 +67,14 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
     setErrors((prev) => ({ ...prev, [name]: "" }));
     setLoginError("");
   };
+
   const handleSignIn = (e) => {
     e.preventDefault();
-
+  
     const { email, password } = credentials;
     let formIsValid = true;
     const newErrors = { email: "", password: "" };
-
+  
     if (!email) {
       newErrors.email = "Email doldurulmalıdır";
       formIsValid = false;
@@ -86,50 +83,52 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
       newErrors.password = "Şifrə doldurulmalıdır";
       formIsValid = false;
     }
-
+  
     setErrors(newErrors);
-
+  
     if (!formIsValid) return;
-
-    const storedUserData = JSON.parse(localStorage.getItem("users"));
-
+  
+    const storedUserData = JSON.parse(localStorage.getItem("users")) || [];
+  
     const user =
-      storedUserData &&
       storedUserData.find(
         (user) =>
           user.email === credentials.email &&
           user.password === credentials.password
       );
-
-    if (user) {
+  
+    if (credentials.email === "arzuefendi@gmail.com" && credentials.password === "adminPassword") {
+      localStorage.setItem("isAdmin", "true");
+      setUsername("Admin");
+      setEmail("arzuefendi@gmail.com");
       setIsAuthenticated(true);
+      handleSignInModalClose();
+    } else if (user) {
       localStorage.setItem("isAuthenticated", "true");
       localStorage.setItem("username", user.username);
-      localStorage.setItem("usernamee", user.username);
       localStorage.setItem("email", user.email);
       setUsername(user.username);
       setEmail(user.email);
+      setIsAuthenticated(true);
       handleSignInModalClose();
     } else {
       setLoginError("Invalid email or password");
     }
   };
+  
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    localStorage.removeItem("isAuthenticated");
+    localStorage.removeItem("isAdmin");
+    localStorage.removeItem("username");
+    localStorage.removeItem("email");
+    setShowProfile(false);
+    setUsername("");
+    setEmail("");
+    navigate("/"); 
+  };
+  
 
-  useEffect(() => {
-    const authStatus = localStorage.getItem("isAuthenticated");
-    const storedUsername = localStorage.getItem("username");
-    const isAdmin = localStorage.getItem("isAdmin");
-
-    if (authStatus === "true") {
-      setIsAuthenticated(true);
-      setUsername(storedUsername);
-    } else if (isAdmin === "true") {
-      setIsAuthenticated(true);
-      setUsername("Admin");
-    } else {
-      setIsAuthenticated(false);
-    }
-  }, [setIsAuthenticated, location]);
   return (
     <div>
       <nav className="navbar navbar-expand-lg fixed-top">
@@ -151,7 +150,7 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div
-           className={`collapse navbar-collapse justify-content-end ${isNavOpen ? "show" : ""}`}
+            className={`collapse navbar-collapse justify-content-end ${isNavOpen ? "show" : ""}`}
             id="navbarSupportedContent"
           >
             <ul className="navbar-nav me-auto ms-auto mb-2 mb-lg-0">
@@ -267,6 +266,8 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
           </div>
         </div>
       </nav>
+
+      {/* Sign In Modal */}
       <Modal show={showSignIn} onHide={handleSignInModalClose} centered>
         <Modal.Header closeButton className="bg-black text-white">
           <Modal.Title className="w-100 text-center fs-2">
@@ -334,6 +335,7 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
         </Modal.Body>
       </Modal>
 
+      {/* Profile Modal */}
       <Modal show={showProfile} onHide={() => setShowProfile(false)} centered>
         <Modal.Header closeButton className="bg-black text-white">
           <Modal.Title className="w-100 text-center fs-2 ms-3">

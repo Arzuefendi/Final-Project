@@ -58,6 +58,11 @@ main img {
     height: 50vh;
   }
 }
+@media (max-width: 912px) {
+  main {
+    height: 40vh;
+  }
+}
 @media (max-width: 895px) {
   main img {
     width: 120% !important;
@@ -111,6 +116,11 @@ main img {
 }
 @media (max-width: 440px) {
   main {
-    height: 65vh;
+    height: 55vh;
+  }
+}
+@media (max-width: 820px) {
+  main img {
+    display: none;
   }
 }/*# sourceMappingURL=Testimotional.css.map */

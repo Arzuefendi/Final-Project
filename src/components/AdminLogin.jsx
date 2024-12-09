@@ -3,6 +3,7 @@ import "../style/adminLogin.css";
 import { ThemeContext } from "../ModeContext/Mode";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+
 const AdminLogin = () => {
   const { isDarkMode } = useContext(ThemeContext);
   const navigate = useNavigate();
@@ -43,12 +44,16 @@ const AdminLogin = () => {
       return;
     }
     setError("");
+
     
     localStorage.setItem("isAdmin", "true");
-    localStorage.setItem("username", "Admin");
-    localStorage.setItem("email", email)
+    localStorage.setItem("isAuthenticated", "true");  
+    localStorage.setItem("username", "Admin");  
+    localStorage.setItem("email", email);  
+
     navigate("/adminpanel");
   };
+
   return (
     <div className={`admin-login ${isDarkMode ? "dark-mode" : "light-mode"} `}>
       <form onSubmit={handleSubmit}>

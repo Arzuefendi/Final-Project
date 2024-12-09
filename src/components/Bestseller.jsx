@@ -59,7 +59,7 @@ const Bestseller = () => {
 
     if (isInWishlist) {
       removeFromWishlist(el.id); 
-      toast.info("Product removed from wishlist!", {
+      toast.info(t("Product removed from wishlist!"), {
         position: "bottom-left",
         autoClose: 2000,
         hideProgressBar: false,
@@ -70,7 +70,7 @@ const Bestseller = () => {
       });
     } else {
       addToWishlist(el); 
-      toast.success("Product added to wishlist!", {
+      toast.success(t("Product added to wishlist!"), {
         position: "bottom-left",
         autoClose: 2000,
         hideProgressBar: false,
