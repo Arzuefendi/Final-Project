@@ -64,10 +64,10 @@ const ProductDetails = () => {
   const toggleWishlist = () => {
     if (isInWishlist) {
       removeFromWishlist(product.id);
-      toast.info("Product removed from wishlist!");
+      toast.info(t("Product removed from wishlist!"));
     } else {
       addToWishlist(product);
-      toast.success("Product added to wishlist!");
+      toast.success(t("Product added to wishlist!"));
     }
   };
 

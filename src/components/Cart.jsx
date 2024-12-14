@@ -5,6 +5,7 @@ import { CartContext } from "./AddToCartContext";
 import "../style/cart.css";
 import { MdDelete } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Cart = () => {
   const { t } = useTranslation();
@@ -29,14 +30,29 @@ const Cart = () => {
 
   const handlePromoCode = (e) => {
     e.preventDefault();
-    if (promoCode.trim().toLowerCase() === "discount20") {
+    const enteredCode = promoCode.trim().toLowerCase();
+  
+    if (enteredCode === "discount20") {
       setDiscount(0.2);
-      localStorage.setItem("promoCode", "discount20"); 
+      localStorage.setItem("promoCode", "discount20");
+      Swal.fire({
+        icon: "success",
+        title: "Promo Code Applied!",
+        text: "You have successfully applied a 20% discount.",
+      });
     } else {
       setDiscount(0);
-      localStorage.removeItem("promoCode"); 
+      localStorage.removeItem("promoCode");
+      Swal.fire({
+        icon: "error",
+        title: "Invalid Promo Code",
+        text: "The promo code you entered is not valid. Please try again.",
+        footer: '<a href="#">Need help with promo codes?</a>',
+      });
     }
   };
+  
+  
   
   useEffect(() => {
     const savedPromoCode = localStorage.getItem("promoCode");
